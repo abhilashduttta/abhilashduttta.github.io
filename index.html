@@ -7,9 +7,9 @@
 <meta name="description" content="Photography and cinematography portfolio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Hanken+Grotesk:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#131410;--gold:#e8d8a2;--mute:#a69c78;--line:rgba(232,216,162,.2);--serif:"Newsreader",Georgia,serif;--sans:"Hanken Grotesk",system-ui,sans-serif;--ease:cubic-bezier(.16,.8,.1,1)}
+:root{--bg:#131410;--gold:#e8d8a2;--mute:#a69c78;--line:rgba(232,216,162,.2);--disp:"Cormorant Garamond","Newsreader",Georgia,serif;--serif:"Newsreader",Georgia,serif;--sans:"Hanken Grotesk",system-ui,sans-serif;--ease:cubic-bezier(.16,.8,.1,1)}
 *{box-sizing:border-box;margin:0}
 html{background:var(--bg);scroll-behavior:smooth}
 body{background:var(--bg);color:var(--gold);font:400 1rem/1.5 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -23,25 +23,26 @@ a{color:inherit;text-decoration:none;cursor:pointer}
 @keyframes ot{to{opacity:0;transform:translateY(-2vh)}}
 /* home */
 #v-home{position:relative;height:100svh;overflow:hidden}
-.nm{position:absolute;top:2.2rem;left:50%;transform:translateX(-50%);z-index:5;white-space:nowrap;font:italic 400 clamp(1.4rem,2.2vw,2.2rem)/1 var(--serif);letter-spacing:-.01em}
-.words{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;gap:2vh;padding:0 7vw}
-.w{width:max-content;font:italic 400 clamp(3.2rem,11vw,12rem)/.95 var(--serif);letter-spacing:-.035em;transition:opacity .7s ease;animation:fl 8s ease-in-out infinite}
+.nm{position:absolute;top:1.8rem;left:50%;transform:translateX(-50%);z-index:5;white-space:nowrap;font:italic 500 clamp(1.6rem,2.4vw,2.5rem)/1 var(--disp);letter-spacing:.01em}
+.words{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:center;gap:1vh;padding:0 7vw;pointer-events:none}
+.w{pointer-events:auto;width:max-content;font:500 clamp(3.6rem,11vw,12rem)/.95 var(--disp);letter-spacing:-.02em;text-shadow:0 0 60px rgba(19,20,16,.45);transition:opacity .6s ease;animation:fl 8s ease-in-out infinite}
 .w.p{margin-left:auto;animation-delay:-4s}
 @keyframes fl{50%{transform:translateY(-1.2vh)}}
-body[data-h=c] .w.p,body[data-h=p] .w.c{opacity:.15}
+body[data-h] .w{animation-play-state:paused}
+body[data-h=c] .w.p,body[data-h=p] .w.c{opacity:0}
 .bt{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;justify-content:space-between;padding:0 3vw 2.2rem}
 .u{border-bottom:1px solid transparent;transition:border-color .3s}
 .u:hover{border-color:var(--gold)}
-.bg{position:absolute;inset:4vh 3vw;z-index:1;overflow:hidden;opacity:0;transition:opacity .7s ease;pointer-events:none;container-type:size}
+.bg{position:absolute;left:0;right:0;top:clamp(5rem,11vh,7.5rem);bottom:clamp(4.5rem,10vh,6.5rem);z-index:1;overflow:hidden;opacity:0;transition:opacity .7s ease;pointer-events:none;container-type:size}
 .bg.on{opacity:1}
-.bg::after{content:"";position:absolute;inset:0;background:rgba(19,20,16,.4);z-index:3}
+.bg::after{content:"";position:absolute;inset:0;background:rgba(19,20,16,.42);z-index:3}
+#pbg::after{background:rgba(19,20,16,.25)}
 #vbg{background:#000}
-#pbg{inset:0}
-.pl{position:absolute;left:50%;top:50%;width:max(100cqw,177.78cqh);height:max(56.25cqw,100cqh);transform:translate(-50%,-50%);opacity:0;transition:opacity .5s}
+.pl{position:absolute;left:50%;top:50%;width:max(100cqw,177.78cqh);height:max(56.25cqw,100cqh);transform:translate(-50%,-50%);opacity:0;transition:opacity .6s}
 .crop .pl{width:max(133.34cqw,177.78cqh);height:max(75cqw,100cqh)}
 .pl.s{opacity:1}
 .pl iframe{width:100%;height:100%;border:0}
-.fl{position:absolute;height:76vh;width:auto;max-width:56vw;object-fit:cover;opacity:0;transition:opacity .35s}
+.fl{position:absolute;left:50%;top:50%;height:100%;width:auto;max-width:100%;transform:translate(-50%,-50%);object-fit:contain;opacity:0;transition:opacity .4s ease}
 .fl.on{opacity:1}
 /* bar + pages */
 #bar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:baseline;padding:1.3rem 3vw 2.5rem;background:linear-gradient(var(--bg) 35%,transparent);opacity:0;pointer-events:none;transition:opacity .6s}
@@ -49,10 +50,10 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 #bar div{display:flex;gap:2rem;font-size:.95rem}
 #bar div a{color:var(--mute);transition:color .3s}
 #bar div a:hover,#bar div a.cur{color:var(--gold)}
-#nmx{font:italic 400 1.3rem/1 var(--serif)}
+#nmx{font:italic 500 1.5rem/1 var(--disp)}
 .pg{padding:20vh 3vw 10vh}
 .hd{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:1.2rem;margin-bottom:12vh}
-.hd h1{font:italic 400 clamp(3rem,9vw,9rem)/.95 var(--serif);letter-spacing:-.035em}
+.hd h1{font:500 clamp(3rem,9vw,9rem)/.95 var(--disp);letter-spacing:-.02em}
 .hd span{color:var(--mute);font-size:.9rem}
 .rv{opacity:0;transform:translateY(5vh);transition:opacity 1.2s ease,transform 1.5s var(--ease)}
 .rv.in{opacity:1;transform:none}
@@ -66,20 +67,26 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 .cap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:.8rem}
 .cap h3{font:400 clamp(1.3rem,2vw,2rem)/1.1 var(--serif)}
 .cap span{color:var(--mute);font-size:.9rem;text-align:right}
-.sl{display:grid;row-gap:16vh;margin-bottom:20vh}
+.sl{display:grid;row-gap:22vh;margin-bottom:24vh}
+.row{display:flex;justify-content:center;align-items:flex-start;gap:2vw}
+.fav{display:flex;flex-direction:column;align-items:center}
+.fav img{display:block;width:auto;height:auto;max-width:100%;max-height:92svh}
+.n1 .fav{max-width:94vw}
+.n2 .fav{max-width:46vw}
 .big{display:flex;flex-direction:column;align-items:var(--j)}
-.big img{display:block;max-width:min(100%,var(--w));max-height:92svh;width:auto;height:auto}
+.big img{display:block;max-width:min(100%,var(--w));max-height:88svh;width:auto;height:auto}
 .ph{cursor:zoom-in}
 .ph img{background:var(--line);transition:opacity .6s}
-.ph:hover img{opacity:.82}
+.ph:hover img{opacity:.85}
 .pgrid .ph{grid-column:var(--c);margin-top:calc(var(--o)*1vw)}
 .pgrid img{display:block;width:100%;height:auto;min-height:10rem}
+.pgrid .big img{width:auto}
 .pgrid{row-gap:9vh}
 .ph figcaption{margin-top:.45rem;color:var(--mute);font-size:.8rem}
 .ab{display:grid;grid-template-columns:repeat(12,1fr);column-gap:2vw}
 .ab p{grid-column:4/12;font:400 clamp(1.7rem,3.6vw,3.4rem)/1.18 var(--serif);letter-spacing:-.01em}
 .ab ul{grid-column:4/9;list-style:none;margin-top:3.5rem;color:var(--mute);column-count:2}
-#em{display:block;width:max-content;max-width:100%;margin-left:auto;font:italic 400 clamp(2rem,7.5vw,8rem)/1.05 var(--serif);letter-spacing:-.03em;overflow-wrap:anywhere;border-bottom:1px solid transparent;transition:border-color .3s}
+#em{display:block;width:max-content;max-width:100%;margin-left:auto;font:italic 500 clamp(2rem,7.5vw,8rem)/1.05 var(--disp);letter-spacing:-.02em;overflow-wrap:anywhere;border-bottom:1px solid transparent;transition:border-color .3s}
 #em:hover{border-color:var(--gold)}
 #ig{display:block;width:max-content;margin:2.5rem 0 0 auto;font-size:1.1rem}
 #lb{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;padding:7vh 4vw;background:rgba(19,20,16,.97)}
@@ -90,6 +97,7 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 @media(max-width:720px){
 #bar div{gap:1rem;font-size:.85rem}#nmx{display:none}
 .film,.pgrid .ph{grid-column:1/-1;margin-top:0}.pgrid .ph:nth-child(even){width:78%;justify-self:end}
+.row{flex-direction:column;align-items:center}.n2 .fav,.n1 .fav{max-width:100%}
 .big{align-items:center}.big img{max-width:100%}.ab p,.ab ul{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.w{animation:none}.rv{opacity:1;transform:none;transition:none}}
 </style>
@@ -120,8 +128,9 @@ const SITE = {
   about: "I developed feelings for nature when our family moved to Guwahati in 2007. I wanted to cherish my memories, so I learned to click photos using my father's camera, who also had a passion for photography and cinematography. Since then, I’ve shot several portraits and landscapes around me",
   services: ["Photography", "Cinematography", "Colour grading"],
   folder: "photos/", ext: "jpg",
-  featured: [1, 25, 26, 6, 8, 37, 38, 36],   // your best, shown large, in this order
-  more: [2,3,4,5,9,10,11,12,14,15,16,19,20,21,24,27,28,17,22,23,33,34,35,29,30,31,32],
+  favs: [[1], [25, 26], [8], [36]],   // your favourites, shown huge. [25, 26] = two side by side
+  more: [6,37,38,14,15,27,16,19,20,21,24,28,17,22,23,33,34,35,29,30,31,32],
+  large: [27, 28],    // photos in the list above that get shown bigger
   cropBars: true      // true removes the black side bars from 4:3 films on the home page
 };
 const FILMS = [       // id = the part after v= in the YouTube link
@@ -134,7 +143,7 @@ const FILMS = [       // id = the part after v= in the YouTube link
 
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)], pad = n => String(n).padStart(2, "0");
 const src = n => SITE.folder + n + "." + SITE.ext;
-const ALL = [...SITE.featured, ...SITE.more];
+const ALL = [...SITE.favs.flat(), ...SITE.more];
 if (SITE.cropBars) document.documentElement.classList.add("crop");
 document.title = SITE.name + ", " + SITE.role;
 $("#nm").textContent = $("#nmx").textContent = SITE.name;
@@ -150,45 +159,58 @@ $("#fg").innerHTML = FILMS.map((f, i) => { const [c, s] = FL[i % 4];
 
 /* photography page */
 const fig = (n, style, cls) => `<figure class="ph rv ${cls}" data-n="${n}" style="${style}"><img src="${src(n)}" alt="Photograph ${n}" loading="lazy" decoding="async"><figcaption>${pad(n)}</figcaption></figure>`;
-const SJ = [["flex-start","70vw"],["flex-end","46vw"],["center","60vw"],["flex-end","74vw"],["flex-start","50vw"],["center","72vw"],["flex-end","44vw"]];
-$("#sl").innerHTML = SITE.featured.map((n, i) => { const [j, w] = SJ[i % 7]; return fig(n, `--j:${j};--w:${w}`, "big"); }).join("");
-const PL = [[1,7,0],[9,4,14],[4,5,4],[1,4,0],[6,3,10],[10,3,2],[2,6,0],[9,4,18],[5,4,0],[1,5,6],[8,5,0]];
-$("#pgr").innerHTML = SITE.more.map((n, i) => { const [a, s, o] = PL[i % PL.length]; return fig(n, `--c:${a} / span ${s};--o:${o}`, ""); }).join("");
+$("#sl").innerHTML = SITE.favs.map(r => `<div class="row n${r.length}">${r.map(n => fig(n, "", "fav")).join("")}</div>`).join("");
+const PL = [[1,7,0],[9,4,14],[4,5,4],[1,4,0],[6,3,10],[10,3,2],[2,6,0],[9,4,18],[5,4,0],[1,5,6],[8,5,0]]; let lg = 0;
+$("#pgr").innerHTML = SITE.more.map((n, i) => {
+  if (SITE.large.includes(n)) return fig(n, `--c:1 / -1;--o:0;--j:${lg++ % 2 ? "flex-end" : "flex-start"};--w:46vw`, "big");
+  const [a, s, o] = PL[i % PL.length]; return fig(n, `--c:${a} / span ${s};--o:${o}`, ""); }).join("");
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
 $$(".rv").forEach(el => io.observe(el));
 
-/* home: hover on Cinematography plays cuts of the films behind */
-const P = [], W = []; let vOn = false, vi = 0, vT;
+/* home: hover on Cinematography plays cuts of the films behind.
+   One timer chain per hover (a token cancels old ones) so nothing can pile up. */
+const P = [], W = []; let vOn = false, vTok = 0, vNext = 0, vWant = -1, vShow = -1, vT, vFB;
 $("#vbg").innerHTML = FILMS.map((_, i) => `<div class="pl"><div id="hy${i}"></div></div>`).join("");
 W.push(...$$("#vbg .pl"));
 const yt = document.createElement("script"); yt.src = "https://www.youtube.com/iframe_api"; document.head.append(yt);
+const vReveal = i => { if (!vOn || i !== vWant || vShow === i) return; const old = vShow; vShow = i; W[i].classList.add("s");
+  if (old >= 0) { W[old].classList.remove("s"); setTimeout(() => { if (vShow !== old && P[old] && P[old].pauseVideo) P[old].pauseVideo(); }, 800); } };
 window.onYouTubeIframeAPIReady = () => FILMS.forEach((f, i) => {
   const v = { controls: 0, modestbranding: 1, rel: 0, playsinline: 1, disablekb: 1, fs: 0, iv_load_policy: 3 };
   if (location.protocol.startsWith("http")) v.origin = location.origin;
-  P[i] = new YT.Player("hy" + i, { videoId: f.id, playerVars: v, events: { onReady: e => { e.target.mute(); e.target.setPlaybackQuality("hd1080"); } } });
+  P[i] = new YT.Player("hy" + i, { videoId: f.id, playerVars: v, events: {
+    onReady: e => { e.target.mute(); e.target.setPlaybackQuality("hd1080"); },
+    onStateChange: e => { if (e.data === 1) vReveal(i); } } });
 });
-const cutV = first => { if (!vOn || !P.length) return; const prev = vi; if (!first) vi = (vi + 1) % P.length;
-  const p = P[vi]; if (!p || !p.seekTo) return;
-  p.seekTo((p.getDuration() || 60) * (.08 + Math.random() * .7), true); p.playVideo();
-  setTimeout(() => { if (!vOn) return; W[vi].classList.add("s");
-    if (prev !== vi) { W[prev].classList.remove("s"); setTimeout(() => P[prev] && P[prev].pauseVideo && P[prev].pauseVideo(), 600); } }, 750); };
-const startV = () => { vOn = true; $("#vbg").classList.add("on"); cutV(true); vT = setInterval(cutV, 3300); };
-const stopV = () => { vOn = false; clearInterval(vT); $("#vbg").classList.remove("on");
-  setTimeout(() => { if (!vOn) { W.forEach(w => w.classList.remove("s")); P.forEach(p => p.pauseVideo && p.pauseVideo()); } }, 700); };
+const vStep = t => { if (!vOn || t !== vTok) return;
+  const i = vNext++ % Math.max(P.length, 1), p = P[i];
+  if (p && p.seekTo && p.getDuration) { vWant = i; p.seekTo((p.getDuration() || 60) * (.08 + Math.random() * .7), true); p.playVideo();
+    clearTimeout(vFB); vFB = setTimeout(() => vReveal(i), 1800); }
+  vT = setTimeout(() => vStep(t), 3800); };
+const startV = () => { if (vOn) return; vOn = true; $("#vbg").classList.add("on"); vStep(++vTok); };
+const stopV = () => { vOn = false; vTok++; clearTimeout(vT); clearTimeout(vFB); $("#vbg").classList.remove("on");
+  setTimeout(() => { if (!vOn) { W.forEach(w => w.classList.remove("s")); vShow = -1; P.forEach(p => p.pauseVideo && p.pauseVideo()); } }, 800); };
 
-/* home: hover on Photography flashes stills one by one */
-const ORDER = [...ALL].sort(() => Math.random() - .5); let pOn = false, pi = 0, pT;
-const flash = () => { const im = new Image(); im.className = "fl"; im.src = src(ORDER[pi++ % ORDER.length]);
-  im.style.left = (6 + Math.random() * 32) + "vw"; im.style.top = (6 + Math.random() * 12) + "vh";
-  im.onload = () => { if (!pOn) return; const box = $("#pbg"); [...box.children].forEach(o => { o.classList.remove("on"); setTimeout(() => o.remove(), 450); });
-    box.append(im); requestAnimationFrame(() => requestAnimationFrame(() => im.classList.add("on"))); }; };
-const startP = () => { pOn = true; $("#pbg").classList.add("on"); flash(); pT = setInterval(flash, 950); };
-const stopP = () => { pOn = false; clearInterval(pT); $("#pbg").classList.remove("on"); setTimeout(() => { if (!pOn) $("#pbg").innerHTML = ""; }, 800); };
+/* home: hover on Photography shows stills one at a time, same size, centred */
+const ORDER = [...ALL].sort(() => Math.random() - .5), CACHE = {}; let pOn = false, pTok = 0, pi = 0, pT;
+const getImg = n => CACHE[n] || (CACHE[n] = Object.assign(new Image(), { src: src(n) }));
+const pStep = t => { if (!pOn || t !== pTok) return;
+  const im = getImg(ORDER[pi++ % ORDER.length]); getImg(ORDER[pi % ORDER.length]);
+  const go = () => { if (!pOn || t !== pTok || !im.naturalWidth) return; const box = $("#pbg"), el = document.createElement("img");
+    el.className = "fl"; el.src = im.src; [...box.children].forEach(o => { o.classList.remove("on"); setTimeout(() => o.remove(), 500); });
+    box.append(el); requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("on"))); };
+  im.complete ? go() : (im.onload = go);
+  pT = setTimeout(() => pStep(t), 1200); };
+const startP = () => { if (pOn) return; pOn = true; $("#pbg").classList.add("on"); pStep(++pTok); };
+const stopP = () => { pOn = false; pTok++; clearTimeout(pT); $("#pbg").classList.remove("on"); setTimeout(() => { if (!pOn) $("#pbg").innerHTML = ""; }, 800); };
 
-const hv = (k, on) => { document.body.dataset.h = on ? k : ""; if (k === "c") on ? startV() : stopV(); else on ? startP() : stopP(); };
+const hv = (k, on) => { document.body.dataset.h = on ? k : ""; if (!on) delete document.body.dataset.h; if (k === "c") on ? startV() : stopV(); else on ? startP() : stopP(); };
 $$(".w").forEach(a => { const k = a.dataset.k;
-  a.addEventListener("mouseenter", () => hv(k, 1)); a.addEventListener("mouseleave", () => hv(k, 0));
-  a.addEventListener("focus", () => hv(k, 1)); a.addEventListener("blur", () => hv(k, 0)); });
+  a.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") hv(k, 1); });
+  a.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") hv(k, 0); });
+  a.addEventListener("focus", () => { if (a.matches(":focus-visible")) hv(k, 1); });
+  a.addEventListener("blur", () => hv(k, 0));
+  a.addEventListener("click", () => hv(k, 0)); });
 
 /* pages: smooth hand-over between views */
 let curV = null;
@@ -199,7 +221,7 @@ function route() {
   const done = () => { if (prev) prev.classList.remove("on", "out"); next.classList.add("on"); curV = next;
     document.body.classList.toggle("home", r === "home"); scrollTo(0, 0);
     $$("#bar div a").forEach(a => a.classList.toggle("cur", a.dataset.r === r));
-    if (r !== "home") { document.body.dataset.h = ""; stopV(); stopP(); } };
+    delete document.body.dataset.h; stopV(); stopP(); };
   if (prev) { prev.classList.add("out"); setTimeout(done, 480); } else done();
 }
 addEventListener("hashchange", route); route();
