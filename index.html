@@ -5,8 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Portfolio</title>
 <meta name="description" content="Photography and cinematography portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#131410;--gold:#e8d8a2;--mute:#a69c78;--line:rgba(232,216,162,.2);--disp:Charter,"Bitstream Charter","Sitka Text",Cambria,serif;--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,serif;--sans:system-ui,sans-serif;--ease:cubic-bezier(.16,.8,.1,1)}
+:root{--bg:#131410;--gold:#e8d8a2;--mute:#a69c78;--line:rgba(232,216,162,.2);--disp:"Instrument Serif",Charter,"Bitstream Charter","Sitka Text",Cambria,serif;--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,serif;--sans:"Hanken Grotesk",system-ui,sans-serif;--ease:cubic-bezier(.16,.8,.1,1)}
 *{box-sizing:border-box;margin:0}
 html{background:var(--bg);scroll-behavior:smooth}
 body{background:var(--bg);color:var(--gold);font:400 1rem/1.5 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -18,50 +21,39 @@ a{color:inherit;text-decoration:none;cursor:pointer}
 .view.out{display:block;animation:ot .5s ease both}
 @keyframes in{from{opacity:0;transform:translateY(4vh)}}
 @keyframes ot{to{opacity:0;transform:translateY(-2vh)}}
-/* home: three lanes — a media strip, the words "Film / Photo", a media strip.
-   Hovering a word fills both strips with that section (videos or a photo reel). */
+/* home: a quiet stage. Name on top; the two words and the social icons at the bottom.
+   Hovering a word fills the screen: film clips, or three photos side by side. */
 #v-home{position:relative;height:100svh;overflow:hidden}
-.top{position:absolute;top:1.8rem;left:3vw;right:3vw;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:baseline}
-.top>:last-child{justify-self:end}
-.ini{font-weight:700;letter-spacing:.06em}
-.tl{display:flex;gap:1.1rem;align-items:baseline}
-.tc{color:var(--mute);font-variant-numeric:tabular-nums;letter-spacing:.04em}
-.nm{white-space:nowrap;font:500 clamp(1.15rem,1.8vw,1.65rem)/1 var(--disp);letter-spacing:.03em}
-.bt{position:absolute;left:3vw;right:3vw;bottom:2.2rem;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+.stage{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .9s ease}
+body[data-h=c] .sc,body[data-h=p] .sp{opacity:1}
+.sc video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.1s ease}
+.sc video.s{opacity:1}
+.sp{display:flex}
+.pcol{position:relative;flex:1 1 0;overflow:hidden}
+.pcol img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.07);transition:opacity 1.2s ease,transform 7s cubic-bezier(.16,.8,.1,1)}
+.pcol img.s{opacity:1;transform:none}
+.shade{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .9s ease;background:linear-gradient(rgba(19,20,16,0) 55%,rgba(19,20,16,.55)),rgba(19,20,16,.14)}
+body[data-h] .shade{opacity:1}
+.top{position:absolute;top:2rem;left:3vw;right:3vw;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:baseline;transition:opacity .9s ease;animation:rise 1.8s var(--ease) .2s backwards}
+.ini{font:500 .78rem/1 var(--sans);letter-spacing:.32em}
+.nm{white-space:nowrap;font:italic 400 clamp(1.6rem,2.4vw,2.6rem)/1 var(--disp);letter-spacing:.01em}
+.dock{position:absolute;left:3vw;right:3vw;bottom:2.2rem;z-index:5;display:flex;flex-direction:column;gap:clamp(1.6rem,4.4vh,3rem);animation:rise 1.8s var(--ease) .5s backwards}
+.words{display:flex;justify-content:center;align-items:baseline;gap:clamp(3rem,9vw,10rem)}
+.w{padding:.8rem .5rem;font:400 clamp(2.4rem,4.8vw,5.2rem)/1 var(--disp);letter-spacing:.005em;transition:color .6s ease,opacity .6s ease}
+body[data-h] .w{color:#fff4d6;text-shadow:0 2px 36px rgba(19,20,16,.55)}
+body[data-h] .top,body[data-h] .bt{opacity:0;pointer-events:none}
+body[data-h=p] .w.c,body[data-h=c] .w.p{opacity:0}
+.bt{transition:opacity .9s ease;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
 .bt>:last-child{justify-self:end}
-.soc{display:flex;gap:1.3rem}
-.soc a{display:block;width:18px;height:18px;opacity:.85;transition:opacity .3s}
+.u{font:500 .72rem/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;opacity:.82;transition:opacity .4s ease,color .4s ease}
+.u:hover{opacity:1;color:#fff4d6}
+.soc{display:flex;gap:1.5rem}
+.soc a{display:block;width:18px;height:18px;opacity:.8;transition:opacity .3s}
 .soc a:hover{opacity:1}
 .soc svg{display:block;width:100%;height:100%}
-.u{border-bottom:1px solid transparent;transition:border-color .3s}
-.u:hover{border-color:var(--gold)}
-.home-stage{position:absolute;inset:0;display:flex}
-.lanes{width:100%;display:flex;flex-direction:column}
-.lane{position:relative;flex:1 1 0;overflow:hidden;pointer-events:none}
-.ly{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
-body[data-h=c] .lv,body[data-h=p] .lp{opacity:1}
-.lv video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
-.lv video.s{opacity:1}
-.track{display:flex;gap:.6rem;height:100%;width:max-content;animation:reel 70s linear infinite}
-.track img{display:block;height:100%;width:auto}
-#laneB .track{animation-direction:reverse}
-@keyframes reel{to{transform:translateX(-50%)}}
-body:not([data-h=p]) .track{animation-play-state:paused}
-.words{position:relative;display:flex;justify-content:center;gap:clamp(.4rem,1.6vw,1.4rem);padding:clamp(.6rem,1.4vh,.85rem) 0;border-block:1px solid var(--gold);transition:border-color .5s ease}
-/* a dashed line always drifting through the lane; each word sits on a patch of page colour, so the line breaks around it */
-.words::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:repeating-linear-gradient(90deg,var(--gold) 0 12px,transparent 12px 22px);opacity:.5;transition:opacity .5s ease;animation:flow 1.4s linear infinite;-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
-@keyframes flow{to{background-position:-22px 0}}
-body[data-h] .words{border-color:transparent}
-body[data-h] .words::before{opacity:0}
-.w{position:relative;padding:0 .5em;background:var(--bg);font:500 clamp(1.1rem,1.8vw,1.65rem)/1 var(--disp);text-transform:uppercase;letter-spacing:.14em;transition:color .4s ease;animation:fl 2.6s ease-in-out infinite}
-.w.p{animation-delay:.3s}
-@keyframes fl{50%{transform:translateY(-.18em)}}
-body[data-h] .w{animation:none}
-#v-home .top,#v-home .bt{transition:opacity .5s ease}
-body[data-h] #v-home .top,body[data-h] #v-home .bt{opacity:0;pointer-events:none}
-body[data-h=c] .w.c,body[data-h=p] .w.p{color:#fff4d6}
-body[data-h=c] .w.p,body[data-h=p] .w.c{color:rgba(232,216,162,.4)}
-@media(hover:none){.lane{visibility:hidden}}
+@keyframes rise{from{opacity:0;transform:translateY(1.4vh)}}
+@media(hover:none){.stage{display:none}}
+@media(max-width:720px){.words{flex-direction:column;align-items:center;gap:.2rem}.w{font-size:2.6rem}}
 /* bar + pages */
 #bar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:baseline;padding:1.3rem 3vw 2.5rem;background:linear-gradient(var(--bg) 35%,transparent);opacity:0;pointer-events:none;transition:opacity .6s}
 body:not(.home) #bar{opacity:1;pointer-events:auto}
@@ -71,7 +63,7 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 #nmx{font:italic 500 1.5rem/1 var(--disp)}
 .pg{padding:20vh 3vw 10vh}
 .hd{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:1.2rem;margin-bottom:12vh}
-.hd h1{font:500 clamp(3rem,9vw,9rem)/.95 var(--disp);letter-spacing:-.02em}
+.hd h1{font:400 clamp(3rem,9vw,9rem)/.95 var(--disp);letter-spacing:-.02em}
 .hd span{color:var(--mute);font-size:.9rem}
 .rv{opacity:0;transform:translateY(5vh);transition:opacity 1.2s ease,transform 1.5s var(--ease)}
 .rv.in{opacity:1;transform:none}
@@ -127,20 +119,19 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 .pgrid .ph{grid-column:1/-1;margin-top:0}.pgrid .ph:nth-child(even){width:78%;justify-self:end}
 .row{flex-direction:column;align-items:center}.n2 .fav,.n1 .fav{max-width:100%}
 .big{align-items:center}.big img{max-width:100%}.ab p,.ab ul{grid-column:1/-1}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.w,.words::before{animation:none}.rv{opacity:1;transform:none;transition:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.top,.dock{animation:none}.rv{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body class="home">
 <nav id="bar"><a id="nmx" href="#/"></a><div><a data-r="cinematography" href="#/cinematography">Cinematography</a><a data-r="photography" href="#/photography">Photography</a><a data-r="about" href="#/about">About</a><a data-r="contact" href="#/contact">Contact</a></div></nav>
 <main>
 <section class="view" id="v-home">
-  <div class="top"><span class="tl"><a class="ini" id="ini" href="#/"></a><span class="tc" id="tc">00:00:00:00</span></span><div class="nm" id="nm"></div><a class="u" href="#/about">About</a></div>
-  <div class="home-stage"><div class="lanes" id="lanes">
-    <div class="lane" id="laneT"></div>
-    <div class="words"><a class="w c" data-k="c" href="#/cinematography">Film</a><a class="w p" data-k="p" href="#/photography">Photo</a></div>
-    <div class="lane" id="laneB"></div>
-  </div></div>
-  <div class="bt"><a class="u" href="#/contact">Contact</a><span class="soc"><a id="sig" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a><a id="syt" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a></span><span>India</span></div>
+  <div class="stage sc" id="sc"></div><div class="stage sp" id="sp"></div><div class="shade"></div>
+  <div class="top"><span class="tl"><a class="ini" id="ini" href="#/"></a></span><div class="nm" id="nm"></div><span></span></div>
+  <div class="dock">
+    <div class="words"><a class="w p" data-k="p" href="#/photography">Photography</a><a class="w c" data-k="c" href="#/cinematography">Cinematography</a></div>
+    <div class="bt"><a class="u" href="#/contact">Contact</a><span class="soc"><a id="sig" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a><a id="syt" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a></span><a class="u" href="#/about">About</a></div>
+  </div>
 </section>
 <section class="view" id="v-cinematography"><div class="pg"><div class="news" id="fg"></div></div></section>
 <section class="view" id="v-photography"><div class="pg"><div class="hd rv"><h1>Photography</h1><span id="pn"></span></div><div class="sl" id="sl"></div><div class="gx pgrid" id="pgr"></div></div></section>
@@ -162,7 +153,8 @@ const SITE = {
   folder: "photos/", ext: "jpg",
   favs: [[1], [25, 26], [8], [36]],   // your favourites, shown huge. [25, 26] = two side by side
   more: [6,37,38,14,15,27,16,19,20,21,24,28,17,22,23,33,34,35,29,30,31,32],
-  large: [27, 28]     // photos in the list above that get shown bigger
+  large: [27, 28],    // photos in the list above that get shown bigger
+  reel: [25,26,36,14,15,16,19,20,21,24,28,22,23,33,34,35]   // portrait photos the home screen shows when you hover Photography
 };
 const FILMS = [       // id = the part after v= in the YouTube link. Each film also needs two clips:
                       // videos/c<n>.mp4 (home strips) and videos/p<n>.mp4 (films page), n = its position from 0
@@ -180,10 +172,6 @@ document.title = SITE.name + ", " + SITE.role;
 $("#nm").textContent = $("#nmx").textContent = SITE.name;
 $("#ini").textContent = SITE.name.split(" ").map(w => w[0]).join("");
 $("#sig").href = SITE.instagram; $("#syt").href = SITE.youtube;
-/* camera-style timecode beside AD: hh:mm:ss:ff at 24fps since the page opened */
-const tc = $("#tc"), t0 = performance.now();
-setInterval(() => { const f = Math.floor((performance.now() - t0) / (1000 / 24)), sec = Math.floor(f / 24);
-  tc.textContent = [Math.floor(sec / 3600), Math.floor(sec / 60) % 60, sec % 60, f % 24].map(pad).join(":"); }, 1000 / 24);
 $("#pn").textContent = ALL.length + " photographs";
 $("#ab").textContent = SITE.about;
 $("#svc").innerHTML = SITE.services.map(s => `<li>${s}</li>`).join("");
@@ -202,51 +190,51 @@ $("#pgr").innerHTML = SITE.more.map((n, i) => {
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
 $$(".rv").forEach(el => io.observe(el));
 
-/* home: hovering "Film" plays cuts of the films in both strips (staggered);
-   hovering "Photo" scrolls a reel of photos through them (opposite directions).
-   Self-hosted muted <video> (videos/c0.mp4, ... in FILMS order), so no YouTube chrome. */
+/* home: hovering a word fills the whole screen.
+   Cinematography: your self-hosted clips (videos/c0.mp4, c1.mp4 ... in FILMS order) cut one after another.
+   Photography: three portrait photos side by side (the "reel" list above), each changing in turn. */
 const CLIPS = FILMS.map((_, i) => "videos/c" + i + ".mp4");
-const LANES = [$("#laneT"), $("#laneB")];
-// Two <video>s per strip that swap clips, and hidden ones drop their source. Browsers allow
-// ~6 connections per server and each buffering video holds one; with a video per clip per
-// strip, the last clips and every photo could wait forever on a slow connection.
-LANES.forEach(l => l.innerHTML = `<div class="ly lv"><video muted loop playsinline></video><video muted loop playsinline></video></div><div class="ly lp"><div class="track"></div></div>`);
-const VS = LANES.map(l => [...l.querySelectorAll("video")]), N = [0, 2];
-VS.flat().forEach(v => v.muted = true);
-let mode = "", tok = 0, T = [];
+const SC = $("#sc"), SP = $("#sp");
+SC.innerHTML = `<video muted loop playsinline></video><video muted loop playsinline></video>`;
+SP.innerHTML = `<div class="pcol"></div><div class="pcol"></div><div class="pcol"></div>`;
+const VV = [...SC.querySelectorAll("video")], COLS = [...SP.children];
+VV.forEach(v => v.muted = true);
+VV[0].preload = "auto"; VV[0].src = CLIPS[0];                       // warm up the first clip
+const ORDER = [...SITE.reel].sort(() => Math.random() - .5), PC = {};
+const pre = n => PC[n] || (PC[n] = Object.assign(new Image(), { src: src(n), decoding: "async" }));
+setTimeout(() => ORDER.slice(0, 4).forEach(pre), 2500);              // warm up a few photos
+let mode = "", tok = 0, ci = 0, pi = 0, T = [];
 const ready = v => new Promise(r => { if (v.readyState >= 2) return r(v); const ok = () => r(v);
   v.addEventListener("loadeddata", ok, { once: true }); v.addEventListener("playing", ok, { once: true }); setTimeout(ok, 4000); });
 const free = v => { v.classList.remove("s"); v.pause(); v.removeAttribute("src"); v.load(); };
-const load = k => { const v = VS[k].find(x => !x.classList.contains("s")), c = CLIPS[N[k]++ % CLIPS.length];
+const film = t => { if (t !== tok) return;
+  const v = VV.find(x => !x.classList.contains("s")), o = VV.find(x => x !== v), c = CLIPS[ci++ % CLIPS.length];
   if (v.getAttribute("src") !== c) v.src = c;
-  v.play().catch(() => {}); return ready(v); };
-const cut = (k, v) => { const o = VS[k].find(x => x !== v); v.classList.add("s"); o.classList.remove("s");
-  setTimeout(() => { if (!o.classList.contains("s")) free(o); }, 900); };
-const reel = (k, t, d = 3800) => load(k).then(v => { if (t !== tok) return; cut(k, v); T[k] = setTimeout(() => reel(k, t), d); });
-VS.forEach((vs, k) => { vs[0].preload = "auto"; vs[0].src = CLIPS[N[k]]; });   // warm up each strip's first clip
-let built = false;
-const buildPhotos = () => { if (built) return; built = true;
-  const o = [...ALL].sort(() => Math.random() - .5);
-  [o.slice(0, 10), o.slice(10, 20)].forEach((set, k) => {
-    const imgs = set.map(n => `<img src="${src(n)}" alt="" loading="lazy" decoding="async">`).join("");
-    LANES[k].querySelector(".track").innerHTML = imgs + imgs; }); };   // doubled so the loop is seamless
+  v.play().catch(() => {});
+  ready(v).then(() => { if (t !== tok) return;
+    v.classList.add("s"); o.classList.remove("s");
+    setTimeout(() => { if (!o.classList.contains("s")) free(o); }, 1200);
+    T.push(setTimeout(() => film(t), 4300)); }); };
+const photo = (k, t, first) => { if (t !== tok) return;
+  const im = pre(ORDER[pi++ % ORDER.length]);
+  const show = () => { if (t !== tok || !im.naturalWidth) return;
+    const col = COLS[k], el = document.createElement("img"); el.src = im.src; el.alt = "";
+    [...col.children].forEach(o => { o.classList.remove("s"); setTimeout(() => o.remove(), 1400); });
+    col.append(el); requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("s"))); };
+  im.complete ? show() : im.addEventListener("load", show, { once: true });
+  pre(ORDER[pi % ORDER.length]);
+  T.push(setTimeout(() => photo(k, t), first ? 3500 + k * 1100 : 3600)); };   // columns change one after another
 const setMode = m => { if (m === mode) return;
-  // words stop floating while active; ease them from wherever they are back to the shared baseline
-  const from = !mode && m ? $$(".w").map(w => getComputedStyle(w).transform) : null;
-  mode = m; const t = ++tok; T.forEach(clearTimeout);
+  mode = m; const t = ++tok; T.forEach(clearTimeout); T = [];
   if (m) document.body.dataset.h = m; else delete document.body.dataset.h;
-  if (from) $$(".w").forEach((w, i) => w.animate([{ transform: from[i] }, { transform: "none" }], { duration: 350, easing: "ease-out" }));
-  if (m === "c") Promise.all([load(0), load(1)]).then(([a, b]) => { if (t !== tok) return;   // first clips appear together
-    cut(0, a); cut(1, b);
-    T[0] = setTimeout(() => reel(0, t), 3800); T[1] = setTimeout(() => reel(1, t), 5700); });   // later cuts alternate
-  else setTimeout(() => { if (mode !== "c") VS.flat().forEach(free); }, 800);   // frees connections for photos
-  if (m === "p") buildPhotos(); };
+  if (m === "c") film(t); else setTimeout(() => { if (mode !== "c") VV.forEach(free); }, 1200);
+  if (m === "p") COLS.forEach((_, k) => photo(k, t, true)); else setTimeout(() => { if (mode !== "p") COLS.forEach(c => c.innerHTML = ""); }, 1300); };
 
-// leaving a word resets after a short grace, so crossing from FILM to PHOTO doesn't blink the strips
+// leaving a word resets after a short grace, so crossing between the two words doesn't flicker
 let L;
 $$(".w").forEach(a => {
   a.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") { clearTimeout(L); setMode(a.dataset.k); } });
-  a.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") L = setTimeout(() => setMode(""), 150); });
+  a.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") L = setTimeout(() => setMode(""), 250); });
   a.addEventListener("focus", () => { if (a.matches(":focus-visible")) setMode(a.dataset.k); });
   a.addEventListener("blur", e => { if (!e.relatedTarget?.matches(".w")) setMode(""); }); });
 
