@@ -7,9 +7,12 @@
 <meta name="description" content="Photography and cinematography portfolio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#131410;--gold:#e8d8a2;--mute:#a69c78;--line:rgba(232,216,162,.2);--disp:"Instrument Serif",Charter,"Bitstream Charter","Sitka Text",Cambria,serif;--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,serif;--sans:"Hanken Grotesk",system-ui,sans-serif;--ease:cubic-bezier(.16,.8,.1,1)}
+:root{--bg:#131410;--gold:#e8d8a2;--mute:#a69c78;--line:rgba(232,216,162,.2);--disp:"Satoshi","Hanken Grotesk",system-ui,sans-serif;--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,serif;--sans:"Satoshi","Hanken Grotesk",system-ui,sans-serif;--ease:cubic-bezier(.16,.8,.1,1)}
 *{box-sizing:border-box;margin:0}
 html{background:var(--bg);scroll-behavior:smooth}
 body{background:var(--bg);color:var(--gold);font:400 1rem/1.5 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -36,16 +39,16 @@ body[data-h=c] .sc,body[data-h=p] .sp{opacity:1}
 body[data-h] .shade{opacity:1}
 .top{position:absolute;top:2rem;left:3vw;right:3vw;z-index:5;display:grid;grid-template-columns:1fr auto 1fr;align-items:baseline;transition:opacity .9s ease;animation:rise 1.8s var(--ease) .2s backwards}
 .ini{font:500 .78rem/1 var(--sans);letter-spacing:.32em}
-.nm{white-space:nowrap;font:italic 400 clamp(1.6rem,2.4vw,2.6rem)/1 var(--disp);letter-spacing:.01em}
+.nm{white-space:nowrap;font:500 clamp(1.1rem,1.6vw,1.8rem)/1 var(--disp);letter-spacing:.05em}
 .dock{position:absolute;left:3vw;right:3vw;bottom:2.2rem;z-index:5;display:flex;flex-direction:column;gap:clamp(1.6rem,4.4vh,3rem);animation:rise 1.8s var(--ease) .5s backwards}
 .words{display:flex;justify-content:center;align-items:baseline;gap:clamp(3rem,9vw,10rem)}
-.w{padding:.8rem .5rem;font:400 clamp(2.4rem,4.8vw,5.2rem)/1 var(--disp);letter-spacing:.005em;transition:color .6s ease,opacity .6s ease}
+.w{padding:.8rem .5rem;font:300 clamp(2.2rem,4.4vw,4.8rem)/1 var(--disp);letter-spacing:-.035em;transition:color .6s ease,opacity .6s ease}
 body[data-h] .w{color:#fff4d6;text-shadow:0 2px 36px rgba(19,20,16,.55)}
 body[data-h] .top,body[data-h] .bt{opacity:0;pointer-events:none}
 body[data-h=p] .w.c,body[data-h=c] .w.p{opacity:0}
 .bt{transition:opacity .9s ease;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
 .bt>:last-child{justify-self:end}
-.u{font:500 .72rem/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;opacity:.82;transition:opacity .4s ease,color .4s ease}
+.u{font:500 .78rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:.82;transition:opacity .4s ease,color .4s ease}
 .u:hover{opacity:1;color:#fff4d6}
 .soc{display:flex;gap:1.5rem}
 .soc a{display:block;width:18px;height:18px;opacity:.8;transition:opacity .3s}
@@ -60,10 +63,10 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 #bar div{display:flex;gap:2rem;font-size:.95rem}
 #bar div a{color:var(--mute);transition:color .3s}
 #bar div a:hover,#bar div a.cur{color:var(--gold)}
-#nmx{font:italic 500 1.5rem/1 var(--disp)}
+#nmx{font:500 1.15rem/1 var(--disp);letter-spacing:.04em}
 .pg{padding:20vh 3vw 10vh}
 .hd{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:1.2rem;margin-bottom:12vh}
-.hd h1{font:400 clamp(3rem,9vw,9rem)/.95 var(--disp);letter-spacing:-.02em}
+.hd h1{font:300 clamp(3rem,8.5vw,9rem)/.95 var(--disp);letter-spacing:-.045em}
 .hd span{color:var(--mute);font-size:.9rem}
 .rv{opacity:0;transform:translateY(5vh);transition:opacity 1.2s ease,transform 1.5s var(--ease)}
 .rv.in{opacity:1;transform:none}
@@ -90,7 +93,8 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 .sl{display:grid;row-gap:22vh;margin-bottom:24vh}
 .row{display:flex;justify-content:center;align-items:flex-start;gap:2vw}
 .fav{display:flex;flex-direction:column;align-items:center}
-.fav img{display:block;width:auto;height:auto;max-width:100%;max-height:92svh}
+#v-photography .pg{padding-top:11vh}
+.fav img{display:block;width:auto;height:auto;max-width:100%;max-height:86svh}
 .n1 .fav{max-width:94vw}
 .n2 .fav{max-width:46vw}
 .big{display:flex;flex-direction:column;align-items:var(--j)}
@@ -106,7 +110,7 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 .ab{display:grid;grid-template-columns:repeat(12,1fr);column-gap:2vw}
 .ab p{grid-column:4/12;font:400 clamp(1.7rem,3.6vw,3.4rem)/1.18 var(--serif);letter-spacing:-.01em}
 .ab ul{grid-column:4/9;list-style:none;margin-top:3.5rem;color:var(--mute);column-count:2}
-#em{display:block;width:max-content;max-width:100%;margin-left:auto;font:italic 500 clamp(2rem,7.5vw,8rem)/1.05 var(--disp);letter-spacing:-.02em;overflow-wrap:anywhere;border-bottom:1px solid transparent;transition:border-color .3s}
+#em{display:block;width:max-content;max-width:100%;margin-left:auto;font:300 clamp(2rem,7vw,8rem)/1.05 var(--disp);letter-spacing:-.04em;overflow-wrap:anywhere;border-bottom:1px solid transparent;transition:border-color .3s}
 #em:hover{border-color:var(--gold)}
 #ig{display:block;width:max-content;margin:2.5rem 0 0 auto;font-size:1.1rem}
 #lb{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;padding:7vh 4vw;background:rgba(19,20,16,.97)}
@@ -134,7 +138,7 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
   </div>
 </section>
 <section class="view" id="v-cinematography"><div class="pg"><div class="news" id="fg"></div></div></section>
-<section class="view" id="v-photography"><div class="pg"><div class="hd rv"><h1>Photography</h1><span id="pn"></span></div><div class="sl" id="sl"></div><div class="gx pgrid" id="pgr"></div></div></section>
+<section class="view" id="v-photography"><div class="pg"><div class="sl" id="sl"></div><div class="gx pgrid" id="pgr"></div></div></section>
 <section class="view" id="v-about"><div class="pg"><div class="hd rv"><h1>About</h1></div><div class="ab rv"><p id="ab"></p><ul id="svc"></ul></div></div></section>
 <section class="view" id="v-contact"><div class="pg"><div class="hd rv"><h1>Contact</h1></div><a id="em" class="rv"></a><a id="ig" class="rv" target="_blank" rel="noopener">Instagram</a></div></section>
 </main>
@@ -153,7 +157,7 @@ const SITE = {
   folder: "photos/", ext: "jpg",
   favs: [[1], [25, 26], [8], [36]],   // your favourites, shown huge. [25, 26] = two side by side
   more: [6,37,38,14,15,27,16,19,20,21,24,28,17,22,23,33,34,35,29,30,31,32],
-  large: [27, 28],    // photos in the list above that get shown bigger
+  large: { 37: 66, 27: 46, 28: 46 },   // photos in the list above that are shown bigger (number = width in % of the screen)
   reel: [25,26,36,14,15,16,19,20,21,24,28,22,23,33,34,35]   // portrait photos the home screen shows when you hover Photography
 };
 const FILMS = [       // id = the part after v= in the YouTube link. Each film also needs two clips:
@@ -172,7 +176,6 @@ document.title = SITE.name + ", " + SITE.role;
 $("#nm").textContent = $("#nmx").textContent = SITE.name;
 $("#ini").textContent = SITE.name.split(" ").map(w => w[0]).join("");
 $("#sig").href = SITE.instagram; $("#syt").href = SITE.youtube;
-$("#pn").textContent = ALL.length + " photographs";
 $("#ab").textContent = SITE.about;
 $("#svc").innerHTML = SITE.services.map(s => `<li>${s}</li>`).join("");
 $("#em").textContent = SITE.email; $("#em").href = "mailto:" + SITE.email; $("#ig").href = SITE.instagram;
@@ -185,7 +188,7 @@ const fig = (n, style, cls) => `<figure class="ph rv ${cls}" data-n="${n}" style
 $("#sl").innerHTML = SITE.favs.map(r => `<div class="row n${r.length}">${r.map(n => fig(n, "", "fav")).join("")}</div>`).join("");
 const PL = [[1,7,0],[9,4,14],[4,5,4],[1,4,0],[6,3,10],[10,3,2],[2,6,0],[9,4,18],[5,4,0],[1,5,6],[8,5,0]]; let lg = 0;
 $("#pgr").innerHTML = SITE.more.map((n, i) => {
-  if (SITE.large.includes(n)) return fig(n, `--c:1 / -1;--o:0;--j:${lg++ % 2 ? "flex-end" : "flex-start"};--w:46vw`, "big");
+  if (n in SITE.large) return fig(n, `--c:1 / -1;--o:0;--j:${lg++ % 2 ? "flex-end" : "flex-start"};--w:${SITE.large[n]}vw`, "big");
   const [a, s, o] = PL[i % PL.length]; return fig(n, `--c:${a} / span ${s};--o:${o}`, ""); }).join("");
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
 $$(".rv").forEach(el => io.observe(el));
