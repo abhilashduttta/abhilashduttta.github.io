@@ -49,8 +49,13 @@ body[data-h=p] .w.c,body[data-h=c] .w.p{opacity:0}
 .u{font:500 .78rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;opacity:.82;transition:opacity .4s ease,color .4s ease}
 .u:hover{opacity:1;color:#fff4d6}
 @keyframes rise{from{opacity:0;transform:translateY(1.4vh)}}
-@media(hover:none){.stage{display:none}}
-@media(max-width:720px){.words{flex-direction:column;align-items:center;gap:.2rem}.w{font-size:2.6rem}}
+@media(max-width:720px){
+.words{flex-direction:column;align-items:center;gap:.25rem;padding-bottom:2vh}.w{font-size:clamp(2.35rem,10.5vw,3.5rem);padding:.65rem .5rem;z-index:4}
+.stage{display:block;inset:0}.sp{display:block}.pcol{display:none}.pcol:first-child{display:block;width:100%;height:100%}
+.top{top:max(1.4rem,env(safe-area-inset-top));left:5vw;right:5vw}.dock{left:5vw;right:5vw;bottom:max(1.6rem,env(safe-area-inset-bottom));gap:1.8rem}
+.u{font-size:.7rem;letter-spacing:.18em}
+}
+
 /* bar + pages */
 #bar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:baseline;padding:1.3rem 3vw 2.5rem;background:linear-gradient(var(--bg) 35%,transparent);opacity:0;pointer-events:none;transition:opacity .6s}
 body:not(.home) #bar{opacity:1;pointer-events:auto}
@@ -58,6 +63,10 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 #bar div a{color:var(--mute);transition:color .3s}
 #bar div a:hover,#bar div a.cur{color:var(--gold)}
 #nmx{font:500 1.15rem/1 var(--disp);letter-spacing:.04em}
+#menub{display:none;background:none;border:0;color:var(--gold);padding:.35rem;cursor:pointer}
+#menub span{display:block;width:1.35rem;height:1px;background:currentColor;margin:.3rem 0;transition:transform .25s ease,opacity .25s ease}
+#bar.menu-open #menub span:first-child{transform:translateY(.2rem) rotate(45deg)}
+#bar.menu-open #menub span:last-child{transform:translateY(-.2rem) rotate(-45deg)}
 .pg{padding:20vh 3vw 10vh}
 .hd{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:1.2rem;margin-bottom:12vh}
 .hd h1{font:300 clamp(3rem,8.5vw,9rem)/.95 var(--disp);letter-spacing:-.045em}
@@ -117,15 +126,26 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 .lbb{position:fixed;background:none;border:0;color:var(--gold);font:inherit;cursor:pointer}
 .x{top:1.2rem;right:3vw}.prv{bottom:1.2rem;left:3vw}.nxt{bottom:1.2rem;right:3vw}
 @media(max-width:720px){
-#bar div{gap:1rem;font-size:.85rem}#nmx{display:none}
+#bar{padding:max(1rem,env(safe-area-inset-top)) 5vw 1rem;background:linear-gradient(var(--bg) 55%,transparent);align-items:center}
+body:not(.home) #bar{background:var(--bg)}
+#nmx{display:block;font-size:1rem}
+#menub{display:block;margin-left:auto;position:relative;z-index:31}
+#navlinks{position:fixed;inset:0;background:var(--bg);display:flex!important;flex-direction:column;justify-content:center;align-items:flex-start;gap:1.2rem;padding:5rem 10vw 3rem;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease,visibility .3s ease;z-index:30}
+#bar.menu-open #navlinks{opacity:1;visibility:visible;pointer-events:auto}
+#navlinks a{font:300 clamp(2.1rem,9vw,3.4rem)/1 var(--disp);letter-spacing:-.035em;color:var(--gold)!important}
 .pgrid .ph{grid-column:1/-1;margin-top:0}.pgrid .ph:nth-child(even){width:78%;justify-self:end}
 .row{flex-direction:column;align-items:center}.n2 .fav,.n1 .fav{max-width:100%}
-.big{align-items:center}.big img{max-width:100%}.ab p,.ab ul{grid-column:1/-1}}
+.big{align-items:center}.big img{max-width:100%}.ab p,.ab ul{grid-column:1/-1}
+#v-cinematography .pg{padding-top:12vh}.story{padding:1.5rem 0 3.5rem}.story h3{font-size:1.65rem}.note{font-size:.82rem}
+#v-photography .pg{padding-top:12vh}.sl{row-gap:16vh;margin-bottom:16vh}.fav img{max-width:94vw;max-height:72svh}
+#v-about .pg{padding-top:13vh}.ab{gap:2.5rem}.ab-photo{width:min(62vw,250px)}.ab p{font-size:1.45rem;line-height:1.4}.ab ul{margin-top:1.8rem;font-size:.78rem}
+#v-contact .pg{padding-top:13vh}#em{font-size:clamp(1.8rem,8vw,3.2rem);margin-left:0}.cl{margin-left:0}
+}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.top,.dock{animation:none}.rv{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body class="home">
-<nav id="bar"><a id="nmx" href="#/"></a><div><a data-r="cinematography" href="#/cinematography">Cinematography</a><a data-r="photography" href="#/photography">Photography</a><a data-r="about" href="#/about">About</a><a data-r="contact" href="#/contact">Contact</a></div></nav>
+<nav id="bar"><a id="nmx" href="#/"></a><button id="menub" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button><div id="navlinks"><a data-r="cinematography" href="#/cinematography">Cinematography</a><a data-r="photography" href="#/photography">Photography</a><a data-r="about" href="#/about">About</a><a data-r="contact" href="#/contact">Contact</a></div></nav>
 <main>
 <section class="view" id="v-home">
 <div class="stage sc" id="sc"></div><div class="stage sp" id="sp"></div><div class="shade"></div>
@@ -230,6 +250,21 @@ a.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") { clear
 a.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") L = setTimeout(() => setMode(""), 250); });
 a.addEventListener("focus", () => { if (a.matches(":focus-visible")) setMode(a.dataset.k); });
 a.addEventListener("blur", e => { if (!e.relatedTarget?.matches(".w")) setMode(""); }); });
+/* mobile: tap once for the home preview, tap again to open the page */
+let mobilePreview = "";
+const isTouchLayout = () => window.matchMedia("(max-width:720px) and (hover:none)").matches;
+$$('.w').forEach(a => a.addEventListener('click', e => {
+  if (!isTouchLayout()) return;
+  const k = a.dataset.k;
+  if (mobilePreview !== k) { e.preventDefault(); mobilePreview = k; setMode(k); }
+  else { mobilePreview = ""; setMode(""); }
+}));
+/* mobile navigation */
+const bar = $("#bar"), menub = $("#menub"), navlinks = $("#navlinks");
+const closeMenu = () => { bar.classList.remove("menu-open"); menub.setAttribute("aria-expanded", "false"); menub.setAttribute("aria-label", "Open menu"); };
+menub.addEventListener("click", () => { const open = !bar.classList.contains("menu-open"); bar.classList.toggle("menu-open", open); menub.setAttribute("aria-expanded", String(open)); menub.setAttribute("aria-label", open ? "Close menu" : "Open menu"); });
+navlinks.addEventListener("click", e => { if (e.target.closest("a")) closeMenu(); });
+addEventListener("resize", () => { if (!isTouchLayout()) { mobilePreview = ""; setMode(""); closeMenu(); } });
 /* pages: smooth hand-over between views */
 let curV = null;
 function route() {
@@ -239,7 +274,9 @@ const prev = curV; if (prev === next) return;
 const done = () => { if (prev) prev.classList.remove("on", "out"); next.classList.add("on"); curV = next;
 document.body.classList.toggle("home", r === "home"); scrollTo(0, 0);
 $$("#bar div a").forEach(a => a.classList.toggle("cur", a.dataset.r === r));
+mobilePreview = "";
 setMode("");
+closeMenu();
 $$("#fg video").forEach(v => r === "cinematography" ? v.play().catch(() => {}) : v.pause()); };
 if (prev) { prev.classList.add("out"); setTimeout(done, 480); } else done();
 }
