@@ -101,9 +101,12 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 .pgrid .big img{width:auto}
 .pgrid{row-gap:9vh}
 .ph figcaption{margin-top:.45rem;color:var(--mute);font-size:.8rem}
-.ab{display:grid;grid-template-columns:repeat(12,1fr);column-gap:2vw}
-.ab p{grid-column:4/12;font:400 clamp(1.7rem,3.6vw,3.4rem)/1.18 var(--serif);letter-spacing:-.01em}
-.ab ul{grid-column:4/9;list-style:none;margin-top:3.5rem;color:var(--mute);column-count:2}
+.ab{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,32vw);column-gap:7vw;align-items:center;min-height:58vh}
+.ab p{grid-column:1;font:400 clamp(1.45rem,2.65vw,2.65rem)/1.3 var(--serif);letter-spacing:-.012em;max-width:850px}
+.ab ul{grid-column:1;list-style:none;margin-top:3rem;color:var(--mute);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem 2rem;max-width:560px;font-size:.9rem;letter-spacing:.03em}
+.ab-photo{grid-column:2;grid-row:1 / span 2;justify-self:end;width:clamp(230px,28vw,390px);aspect-ratio:1;border-radius:50%;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:0 18px 60px rgba(0,0,0,.16)}
+.ab-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 43%;filter:grayscale(100%)}
+@media(max-width:720px){.ab{display:grid;grid-template-columns:1fr;gap:3rem;min-height:0}.ab-photo{grid-column:1;grid-row:1;justify-self:center;width:min(68vw,300px)}.ab p{grid-column:1;font-size:1.5rem;line-height:1.35}.ab ul{grid-column:1;grid-template-columns:1fr 1fr;margin-top:2.2rem}}
 #em{display:block;width:max-content;max-width:100%;margin-left:auto;font:300 clamp(2rem,7vw,8rem)/1.05 var(--disp);letter-spacing:-.04em;overflow-wrap:anywhere;border-bottom:1px solid transparent;transition:border-color .3s}
 #em:hover{border-color:var(--gold)}
 .cl{display:block;width:max-content;margin:1rem 0 0 auto;font-size:1.1rem}
@@ -133,7 +136,7 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 </section>
 <section class="view" id="v-cinematography"><div class="pg"><div class="news" id="fg"></div></div></section>
 <section class="view" id="v-photography"><div class="pg"><div class="sl" id="sl"></div><div class="gx pgrid" id="pgr"></div></div></section>
-<section class="view" id="v-about"><div class="pg"><div class="hd rv"><h1>About</h1></div><div class="ab rv"><p id="ab"></p><ul id="svc"></ul></div></div></section>
+<section class="view" id="v-about"><div class="pg"><div class="ab rv"><div><p id="ab"></p><ul id="svc"></ul></div><div class="ab-photo"><img src="about.jpg" alt="Photographer standing on a sand dune with a camera"></div></div></div></section>
 <section class="view" id="v-contact"><div class="pg"><div class="hd rv"><h1>Contact</h1></div><a id="em" class="rv"></a><a id="ig" class="rv cl" target="_blank" rel="noopener">Instagram</a><a id="yt" class="rv cl" target="_blank" rel="noopener">YouTube</a><a id="ph" class="rv cl"></a></div></section>
 </main>
 <div id="lb"></div>
@@ -146,8 +149,8 @@ email: "abhilashduttta@gmail.com",
 instagram: "https://www.instagram.com/abhilashd_",
 youtube: "https://www.youtube.com/@GrindingA",
 phone: "+91 7002403078",
-about: "I developed feelings for nature when our family moved to Guwahati in 2007. I wanted to cherish my memories, so I learned to click photos using my father's camera, who also had a passion for photography and cinematography. Since then, I’ve shot several portraits and landscapes around me",
-services: ["Photography", "Cinematography", "Colour grading"],
+about: "I’m a photographer and filmmaker interested in turning ordinary moments into images that feel deliberate. My work moves between photography and cinematography, with a focus on composition, natural light, atmosphere, and visual storytelling. I’m still exploring what the camera can say.",
+services: ["Photography", "Cinematography", "Adobe Lightroom", "Da Vinci Resolve"],
 folder: "photos/", ext: "jpg",
 favs: [[1], [25, 26], [8], [36]], // your favourites, shown huge. [25, 26] = two side by side
 more: [6,37,38,14,15,27,16,19,20,21,24,28,17,22,23,33,34,35,29,30,31,32],
