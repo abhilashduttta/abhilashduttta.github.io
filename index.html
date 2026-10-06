@@ -5,14 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Portfolio</title>
 <meta name="description" content="Photography and cinematography portfolio.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://api.fontshare.com">
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-:root{--bg:#131410;--gold:#e8d8a2;--mute:#a69c78;--line:rgba(232,216,162,.2);--disp:"Satoshi","Hanken Grotesk",system-ui,sans-serif;--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,serif;--sans:"Satoshi","Hanken Grotesk",system-ui,sans-serif;--ease:cubic-bezier(.16,.8,.1,1)}
+@font-face{font-family:Satoshi;src:url(fonts/satoshi-300.woff2) format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:Satoshi;src:url(fonts/satoshi-400.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Satoshi;src:url(fonts/satoshi-500.woff2) format("woff2");font-weight:500;font-display:swap}
+:root{--bg:#131410;--gold:#e8d8a2;--mute:#a69c78;--line:rgba(232,216,162,.2);--disp:"Satoshi",system-ui,sans-serif;--serif:Charter,"Bitstream Charter","Sitka Text",Cambria,serif;--sans:"Satoshi",system-ui,sans-serif;--ease:cubic-bezier(.16,.8,.1,1)}
 *{box-sizing:border-box;margin:0}
 html{background:var(--bg);scroll-behavior:smooth}
 body{background:var(--bg);color:var(--gold);font:400 1rem/1.5 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -153,7 +151,7 @@ body:not(.home) #bar{background:var(--bg)}
 </section>
 <section class="view" id="v-cinematography"><div class="pg"><div class="news" id="fg"></div></div></section>
 <section class="view" id="v-photography"><div class="pg"><div class="sl" id="sl"></div><div class="parc" id="pgr"></div></div></section>
-<section class="view" id="v-about"><div class="pg"><div class="ab rv"><div><p id="ab"></p><ul id="svc"></ul></div><div class="ab-photo"><img src="about.jpg" alt="Photographer standing on a sand dune with a camera"></div></div></div></section>
+<section class="view" id="v-about"><div class="pg"><div class="ab rv"><div><p id="ab"></p><ul id="svc"></ul></div><div class="ab-photo"><img src="about.jpg" alt="Photographer standing on a sand dune with a camera" loading="lazy" decoding="async"></div></div></div></section>
 <section class="view" id="v-contact"><div class="pg"><div class="hd rv"><h1>Contact</h1></div><a id="em" class="rv"></a><a id="ig" class="rv cl" target="_blank" rel="noopener">Instagram</a><a id="yt" class="rv cl" target="_blank" rel="noopener">YouTube</a><a id="ph" class="rv cl"></a></div></section>
 </main>
 <div id="lb"></div>
@@ -199,7 +197,7 @@ const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting
 $$(".rv").forEach(el => io.observe(el));
 /* photography archive: rows are built from each photo's real proportions, so portraits and landscapes stay balanced.
    Landscapes get a row of their own; portraits sit in pairs at equal height. Phones get one photo per row. */
-const AR = {}, arcLoad = n => new Promise(r => { if (AR[n]) return r(); const i = new Image(); i.onload = () => { AR[n] = i.naturalWidth / i.naturalHeight; r(); }; i.onerror = () => { AR[n] = .8; r(); }; i.src = src(n); });
+const AR = {1:1.5,2:.6667,3:.6667,4:.6667,5:.6667,6:1.5,7:.6667,8:1.5,9:1.5,10:.6667,11:1.5,12:.6667,13:.6667,14:.6667,15:.6667,16:.6667,17:1.5,18:1.5,19:.6667,20:.6667,21:.6667,22:.8,23:.8,24:.8,25:.6667,26:.6667,27:1.5,28:.6667,29:.5625,30:1.5,31:.5625,32:.5625,33:.5625,34:.6667,35:.6667,36:.6667,37:1.5,38:1.5}, arcLoad = n => new Promise(r => { if (AR[n]) return r(); const i = new Image(); i.onload = () => { AR[n] = i.naturalWidth / i.naturalHeight; r(); }; i.onerror = () => { AR[n] = .8; r(); }; i.src = src(n); });
 let arcMobile = null, arcReady = false, arcStarted = false, arcT;
 const arcBuild = () => {
 const mob = matchMedia("(max-width:720px)").matches; if (mob === arcMobile) return; arcMobile = mob;
@@ -208,7 +206,7 @@ for (let i = 0; i < L.length; i++) { const a = L[i], b = L[i + 1];
 if (!mob && AR[a] < 1.15 && b !== undefined && Math.min((W - G) / (AR[a] + AR[b]), VH * .82) >= VH * .5) { rows.push([a, b]); i++; } else rows.push([a]); }
 let k = 0;
 $("#pgr").innerHTML = rows.map(r => { const s = r.reduce((t, n) => t + AR[n], 0), pt = r.length === 1 && AR[r[0]] < 1.15;
-return `<div class="prow${r.length === 1 ? " one" : ""}${pt ? " pt" : ""}${pt && k++ % 2 ? " r" : ""}" style="--s:${s.toFixed(3)};--g:${r.length - 1}">${r.map(n => `<figure class="ph rv" data-n="${n}" style="flex:${AR[n].toFixed(3)} 1 0%"><img src="${src(n)}" alt="Photograph ${n}" decoding="async"><figcaption>${pad(n)}</figcaption></figure>`).join("")}</div>`; }).join("");
+return `<div class="prow${r.length === 1 ? " one" : ""}${pt ? " pt" : ""}${pt && k++ % 2 ? " r" : ""}" style="--s:${s.toFixed(3)};--g:${r.length - 1}">${r.map(n => `<figure class="ph rv" data-n="${n}" style="flex:${AR[n].toFixed(3)} 1 0%"><img src="${src(n)}" alt="Photograph ${n}" style="aspect-ratio:${AR[n]}" loading="lazy" decoding="async"><figcaption>${pad(n)}</figcaption></figure>`).join("")}</div>`; }).join("");
 $$("#pgr .rv").forEach(el => io.observe(el)); };
 const arcStart = () => { if (arcStarted) return; arcStarted = true; Promise.all(SITE.more.map(arcLoad)).then(() => { arcReady = true; arcBuild(); }); };
 const arcCheck = () => { if (/photography/.test(location.hash)) arcStart(); };
@@ -223,7 +221,6 @@ SC.innerHTML = `<video muted loop playsinline></video><video muted loop playsinl
 SP.innerHTML = `<div class="pcol"></div><div class="pcol"></div><div class="pcol"></div>`;
 const VV = [...SC.querySelectorAll("video")], COLS = [...SP.children];
 VV.forEach(v => v.muted = true);
-VV[0].preload = "auto"; VV[0].src = CLIPS[0]; // warm up the first clip
 const ORDER = [...SITE.reel].sort(() => Math.random() - .5), PC = {};
 const pre = n => PC[n] || (PC[n] = Object.assign(new Image(), { src: src(n), decoding: "async" }));
 setTimeout(() => ORDER.slice(0, 4).forEach(pre), 2500); // warm up a few photos
