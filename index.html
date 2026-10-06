@@ -126,6 +126,28 @@ body:not(.home) #bar{background:var(--bg)}
 #v-contact .pg{padding-top:13vh}#em{font-size:clamp(1.8rem,8vw,3.2rem);margin-left:0}.cl{margin-left:0}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.top,.dock{animation:none}.rv{opacity:1;transform:none;transition:none}}
+
+/* final photography refinements */
+@media(min-width:721px){
+  #v-photography .sl{row-gap:18vh;margin-bottom:18vh}
+  #v-photography .pgrid .ph{margin-bottom:8vh}
+  #v-photography .pgrid .ph:nth-child(1){grid-column:1 / span 6}
+  #v-photography .pgrid .ph:nth-child(2){grid-column:8 / span 5;margin-top:8vh}
+  #v-photography .pgrid .ph:nth-child(3){grid-column:3 / span 6}
+  #v-photography .pgrid .ph:nth-child(4){grid-column:8 / span 5;margin-top:5vh}
+  #v-photography .pgrid .ph:nth-child(5){grid-column:1 / span 4;margin-top:3vh}
+  #v-photography .pgrid .ph:nth-child(6){grid-column:8 / span 5;margin-top:10vh}
+  #v-photography .pgrid .ph:nth-child(11){grid-column:1 / span 6;margin-top:3vh}
+  #v-photography .pgrid .ph:nth-child(15){grid-column:2 / span 4}
+  #v-photography .pgrid .ph:nth-child(16){grid-column:8 / span 5;margin-top:5vh}
+  #v-photography .pgrid .ph:nth-child(19){grid-column:3 / span 5}
+  #v-photography .pgrid .ph:nth-child(20){grid-column:9 / span 3;margin-top:7vh}
+}
+@media(max-width:720px){
+  #v-photography .sl{row-gap:12vh;margin-bottom:12vh}
+  #v-photography .pgrid .ph,#v-photography .pgrid .ph:nth-child(n){margin-bottom:8vh}
+}
+
 </style>
 </head>
 <body class="home">
