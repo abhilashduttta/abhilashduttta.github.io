@@ -257,6 +257,13 @@ a.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") { clear
 a.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") L = setTimeout(() => setMode(""), 250); });
 a.addEventListener("focus", () => { if (a.matches(":focus-visible")) setMode(a.dataset.k); });
 a.addEventListener("blur", e => { if (!e.relatedTarget?.matches(".w")) setMode(""); }); });
+/* once the page is idle, quietly buffer the first clip in the background so the
+first Cinematography hover is instant. This runs after load, so it never delays
+the initial page, and only while the home screen is showing. */
+let warmed = false;
+const warmClip = () => { if (warmed || mode || !document.body.classList.contains("home")) return;
+warmed = true; VV[0].preload = "auto"; if (!VV[0].getAttribute("src")) VV[0].src = CLIPS[0]; };
+("requestIdleCallback" in window ? requestIdleCallback(warmClip, { timeout: 3500 }) : addEventListener("load", () => setTimeout(warmClip, 2500)));
 /* mobile: tap once for the home preview, tap again to open the page */
 let mobilePreview = "";
 const isTouchLayout = () => window.matchMedia("(max-width:720px) and (hover:none)").matches;
