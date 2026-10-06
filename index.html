@@ -127,25 +127,43 @@ body:not(.home) #bar{background:var(--bg)}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.top,.dock{animation:none}.rv{opacity:1;transform:none;transition:none}}
 
-/* final photography refinements */
+/* photography archive (everything after photos 36 and 38).
+   Each photo is sized by column span AND a height cap (--mh), so portraits and landscapes carry similar visual weight.
+   Order of children = order of SITE.more: 6,14,15,27,16,19,20,21,24,28,17,22,23,33,34,35,29,30,31,32 */
 @media(min-width:721px){
   #v-photography .sl{row-gap:18vh;margin-bottom:18vh}
-  #v-photography .pgrid .ph{margin-bottom:8vh}
-  #v-photography .pgrid .ph:nth-child(1){grid-column:1 / span 6}
-  #v-photography .pgrid .ph:nth-child(2){grid-column:8 / span 5;margin-top:8vh}
-  #v-photography .pgrid .ph:nth-child(3){grid-column:3 / span 6}
-  #v-photography .pgrid .ph:nth-child(4){grid-column:8 / span 5;margin-top:5vh}
-  #v-photography .pgrid .ph:nth-child(5){grid-column:1 / span 4;margin-top:3vh}
-  #v-photography .pgrid .ph:nth-child(6){grid-column:8 / span 5;margin-top:10vh}
-  #v-photography .pgrid .ph:nth-child(11){grid-column:1 / span 6;margin-top:3vh}
-  #v-photography .pgrid .ph:nth-child(15){grid-column:2 / span 4}
-  #v-photography .pgrid .ph:nth-child(16){grid-column:8 / span 5;margin-top:5vh}
-  #v-photography .pgrid .ph:nth-child(19){grid-column:3 / span 5}
-  #v-photography .pgrid .ph:nth-child(20){grid-column:9 / span 3;margin-top:7vh}
+  #v-photography .pgrid{column-gap:2vw;row-gap:9vh;align-items:center}
+  #v-photography .pgrid .ph,#v-photography .pgrid .ph:nth-child(n){margin:0;width:auto;justify-self:stretch;align-self:center;display:flex;flex-direction:column;align-items:center}
+  #v-photography .pgrid .ph img{width:auto;max-width:100%;height:auto;max-height:var(--mh,74svh);flex:none}
+  #v-photography .pgrid .ph figcaption{margin-top:.6rem;text-align:center}
+  #v-photography .pgrid .ph:nth-child(1){grid-column:1 / span 6;--mh:72svh}   /* 06 */
+  #v-photography .pgrid .ph:nth-child(2){grid-column:7 / span 6;--mh:76svh;margin-top:5vh}   /* 14 */
+  #v-photography .pgrid .ph:nth-child(3){grid-column:1 / span 5;--mh:62svh}   /* 15 smaller */
+  #v-photography .pgrid .ph:nth-child(4){grid-column:6 / span 7;--mh:78svh}   /* 27 larger */
+  #v-photography .pgrid .ph:nth-child(5){grid-column:1 / span 4;--mh:62svh}   /* 16 */
+  #v-photography .pgrid .ph:nth-child(6){grid-column:5 / span 4;--mh:62svh}   /* 19 */
+  #v-photography .pgrid .ph:nth-child(7){grid-column:9 / span 4;--mh:62svh}   /* 20 */
+  #v-photography .pgrid .ph:nth-child(8){grid-column:1 / span 6;--mh:74svh}   /* 21 */
+  #v-photography .pgrid .ph:nth-child(9){grid-column:7 / span 6;--mh:74svh;margin-top:8vh}   /* 24 */
+  #v-photography .pgrid .ph:nth-child(10){grid-column:1 / span 5;--mh:72svh}   /* 28 */
+  #v-photography .pgrid .ph:nth-child(11){grid-column:6 / span 7;--mh:76svh}   /* 17 */
+  #v-photography .pgrid .ph:nth-child(12){grid-column:1 / span 4;--mh:62svh}   /* 22 */
+  #v-photography .pgrid .ph:nth-child(13){grid-column:5 / span 4;--mh:62svh;margin-top:6vh}   /* 23 */
+  #v-photography .pgrid .ph:nth-child(14){grid-column:9 / span 4;--mh:62svh}   /* 33 */
+  #v-photography .pgrid .ph:nth-child(15){grid-column:1 / span 6;--mh:74svh}   /* 34 */
+  #v-photography .pgrid .ph:nth-child(16){grid-column:7 / span 6;--mh:74svh;margin-top:7vh}   /* 35 */
+  #v-photography .pgrid .ph:nth-child(17){grid-column:1 / span 7;--mh:74svh}   /* 29 */
+  #v-photography .pgrid .ph:nth-child(18){grid-column:8 / span 5;--mh:70svh}   /* 30 */
+  #v-photography .pgrid .ph:nth-child(19){grid-column:1 / span 5;--mh:60svh}   /* 31 smaller */
+  #v-photography .pgrid .ph:nth-child(20){grid-column:6 / span 7;--mh:78svh}   /* 32 larger */
 }
 @media(max-width:720px){
   #v-photography .sl{row-gap:12vh;margin-bottom:12vh}
-  #v-photography .pgrid .ph,#v-photography .pgrid .ph:nth-child(n){margin-bottom:8vh}
+  #v-photography .pgrid .ph,#v-photography .pgrid .ph:nth-child(n){margin:0 0 8vh}
+  #v-photography .pgrid .ph:nth-child(3){width:72%;justify-self:start}   /* 15 smaller */
+  #v-photography .pgrid .ph:nth-child(4){width:100%;justify-self:start}   /* 27 larger */
+  #v-photography .pgrid .ph:nth-child(19){width:72%;justify-self:end}   /* 31 smaller */
+  #v-photography .pgrid .ph:nth-child(20){width:100%;justify-self:start}   /* 32 larger */
 }
 
 </style>
