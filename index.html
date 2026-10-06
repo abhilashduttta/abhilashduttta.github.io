@@ -93,23 +93,7 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 .yr{margin-left:.9rem;font:.75rem/1 var(--sans);letter-spacing:.2em;color:var(--mute)}
 .note{margin-top:.9rem;color:var(--mute);font:italic 400 .95rem/1.4 var(--sans)}
 @media(max-width:720px){.news .story{grid-column:1/-1;padding:1.8rem 0}.pic::before{display:none}}
-.sl{display:grid;row-gap:22vh;margin-bottom:24vh}
-.row{display:flex;justify-content:center;align-items:flex-start;gap:2vw}
-.fav{display:flex;flex-direction:column;align-items:center}
-#v-photography .pg{padding-top:11vh}
-.fav img{display:block;width:auto;height:auto;max-width:100%;max-height:86svh}
-.n1 .fav{max-width:94vw}
-.n2 .fav{max-width:46vw}
-.big{display:flex;flex-direction:column;align-items:var(--j)}
-.big img{display:block;max-width:min(100%,var(--w));max-height:88svh;width:auto;height:auto}
-.ph{cursor:zoom-in}
-.ph img{background:var(--line);transition:opacity .6s}
-.ph:hover img{opacity:.85}
-.pgrid .ph{grid-column:var(--c);margin-top:calc(var(--o)*1vw)}
-.pgrid img{display:block;width:100%;height:auto;min-height:10rem}
-.pgrid .big img{width:auto}
-.pgrid{row-gap:9vh}
-.ph figcaption{margin-top:.45rem;color:var(--mute);font-size:.8rem}
+.gallery-kicker,.archive-head{display:flex;justify-content:space-between;align-items:baseline;color:var(--mute);font:.68rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase}.gallery-kicker{padding-bottom:1.2rem;border-bottom:1px solid var(--line);margin-bottom:8vh}.sl{display:grid;row-gap:24vh;margin-bottom:22vh}.row{display:flex;justify-content:center;align-items:flex-start;gap:2.5vw}.fav{display:flex;flex-direction:column;align-items:center}.#v-photography .pg{padding-top:11vh}.fav img{display:block;width:auto;height:auto;max-width:100%;max-height:86svh}.n1 .fav{max-width:78vw}.n2 .fav{max-width:43vw}.sl>.row:nth-child(3) .fav{max-width:64vw}.sl>.row:nth-child(4) .fav{max-width:82vw}.sl>.row:nth-child(5){gap:2vw}.sl>.row:nth-child(5) .fav{max-width:47vw}.big{display:flex;flex-direction:column;align-items:var(--j)}.big img{display:block;max-width:min(100%,var(--w));max-height:88svh;width:auto;height:auto}.ph{cursor:zoom-in}.ph img{background:var(--line);transition:opacity .6s,transform .8s var(--ease)}.ph:hover img{opacity:.9;transform:scale(1.008)}.pgrid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:2.5vw;row-gap:0;align-items:start}.pgrid .ph{margin:0 0 13vh;width:auto}.pgrid img{display:block;width:100%;height:auto;min-height:0}.pgrid .ph:nth-child(1){grid-column:1 / span 5}.pgrid .ph:nth-child(2){grid-column:8 / span 5;margin-top:13vh}.pgrid .ph:nth-child(3){grid-column:3 / span 7}.pgrid .ph:nth-child(4){grid-column:9 / span 4;margin-top:8vh}.pgrid .ph:nth-child(5){grid-column:1 / span 6;margin-top:5vh}.pgrid .ph:nth-child(6){grid-column:8 / span 5;margin-top:17vh}.pgrid .ph:nth-child(7){grid-column:2 / span 6}.pgrid .ph:nth-child(8){grid-column:9 / span 4;margin-top:10vh}.pgrid .ph:nth-child(9){grid-column:1 / span 7;margin-top:5vh}.pgrid .ph:nth-child(10){grid-column:8 / span 5;margin-top:15vh}.pgrid .ph:nth-child(11){grid-column:3 / span 5}.pgrid .ph:nth-child(12){grid-column:9 / span 4;margin-top:11vh}.pgrid .ph:nth-child(13){grid-column:1 / span 6;margin-top:4vh}.pgrid .ph:nth-child(14){grid-column:8 / span 5;margin-top:18vh}.pgrid .ph:nth-child(15){grid-column:2 / span 7}.pgrid .ph:nth-child(16){grid-column:9 / span 4;margin-top:8vh}.pgrid .ph:nth-child(17){grid-column:1 / span 5;margin-top:4vh}.pgrid .ph:nth-child(18){grid-column:7 / span 6;margin-top:16vh}.pgrid .ph:nth-child(19){grid-column:3 / span 7}.pgrid .ph:nth-child(20){grid-column:9 / span 4;margin-top:10vh}.pgrid .ph:nth-child(21){grid-column:1 / span 6;margin-top:5vh}.pgrid .ph:nth-child(22){grid-column:8 / span 5;margin-top:17vh}.ph figcaption{margin-top:.55rem;color:var(--mute);font-size:.68rem;letter-spacing:.08em}.archive-head{margin-bottom:8vh;padding-bottom:1.2rem;border-bottom:1px solid var(--line)}
 .ab{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,32vw);column-gap:7vw;align-items:center;min-height:58vh}
 .ab p{grid-column:1;font:400 clamp(1.45rem,2.65vw,2.65rem)/1.3 var(--serif);letter-spacing:-.012em;max-width:850px}
 .ab ul{grid-column:1;list-style:none;margin-top:3rem;color:var(--mute);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem 2rem;max-width:560px;font-size:.9rem;letter-spacing:.03em}
@@ -137,7 +121,7 @@ body:not(.home) #bar{background:var(--bg)}
 .row{flex-direction:column;align-items:center}.n2 .fav,.n1 .fav{max-width:100%}
 .big{align-items:center}.big img{max-width:100%}.ab p,.ab ul{grid-column:1/-1}
 #v-cinematography .pg{padding-top:12vh}.story{padding:1.5rem 0 3.5rem}.story h3{font-size:1.65rem}.note{font-size:.82rem}
-#v-photography .pg{padding-top:12vh}.sl{row-gap:16vh;margin-bottom:16vh}.fav img{max-width:94vw;max-height:72svh}
+#v-photography .pg{padding-top:12vh}.gallery-kicker{margin-bottom:7vh;font-size:.61rem}.sl{row-gap:16vh;margin-bottom:15vh}.fav img{max-width:92vw;max-height:70svh}.n2 .fav{max-width:43vw}.sl>.row:nth-child(3) .fav{max-width:82vw}.sl>.row:nth-child(4) .fav{max-width:90vw}.sl>.row:nth-child(5){gap:2vw}.sl>.row:nth-child(5) .fav{max-width:47vw}.archive-head{margin-bottom:5vh;font-size:.59rem}.pgrid{grid-template-columns:1fr;column-gap:0}.pgrid .ph,.pgrid .ph:nth-child(n){grid-column:1;margin:0 0 12vh;width:100%;justify-self:start}.pgrid .ph:nth-child(2n){width:82%;justify-self:end;margin-top:4vh}.pgrid .ph:nth-child(3n){width:90%;justify-self:start;margin-top:1vh}.pgrid .ph:nth-child(4n){width:76%;justify-self:end;margin-top:3vh}.pgrid .ph:nth-child(5n){width:94%;justify-self:start;margin-top:0}
 #v-about .pg{padding-top:13vh}.ab{gap:2.5rem}.ab-photo{width:min(62vw,250px)}.ab p{font-size:1.45rem;line-height:1.4}.ab ul{margin-top:1.8rem;font-size:.78rem}
 #v-contact .pg{padding-top:13vh}#em{font-size:clamp(1.8rem,8vw,3.2rem);margin-left:0}.cl{margin-left:0}
 }
@@ -155,7 +139,7 @@ body:not(.home) #bar{background:var(--bg)}
 </div>
 </section>
 <section class="view" id="v-cinematography"><div class="pg"><div class="news" id="fg"></div></div></section>
-<section class="view" id="v-photography"><div class="pg"><div class="sl" id="sl"></div><div class="gx pgrid" id="pgr"></div></div></section>
+<section class="view" id="v-photography"><div class="pg"><div class="gallery-kicker rv"><span>Selected work</span><span>01 — 38</span></div><div class="sl" id="sl"></div><div class="archive-head rv"><span>More work</span><span>Archive / 2026</span></div><div class="pgrid" id="pgr"></div></div></section>
 <section class="view" id="v-about"><div class="pg"><div class="ab rv"><div><p id="ab"></p><ul id="svc"></ul></div><div class="ab-photo"><img src="about.jpg" alt="Photographer standing on a sand dune with a camera"></div></div></div></section>
 <section class="view" id="v-contact"><div class="pg"><div class="hd rv"><h1>Contact</h1></div><a id="em" class="rv"></a><a id="ig" class="rv cl" target="_blank" rel="noopener">Instagram</a><a id="yt" class="rv cl" target="_blank" rel="noopener">YouTube</a><a id="ph" class="rv cl"></a></div></section>
 </main>
@@ -172,9 +156,9 @@ phone: "+91 7002403078",
 about: "I’m a photographer and filmmaker interested in turning ordinary moments into images that feel deliberate. My work moves between photography and cinematography, with a focus on composition, natural light, atmosphere, and visual storytelling. I’m still exploring what the camera can say.",
 services: ["Photography", "Cinematography", "Adobe Lightroom", "Da Vinci Resolve"],
 folder: "photos/", ext: "jpg",
-favs: [[1], [25, 26], [8], [36]], // your favourites, shown huge. [25, 26] = two side by side
-more: [6,37,38,14,15,27,16,19,20,21,24,28,17,22,23,33,34,35,29,30,31,32],
-large: { 37: 66, 27: 46, 28: 46 }, // photos in the list above that are shown bigger (number = width in % of the screen)
+favs: [[1], [25, 26], [8], [37], [36, 38]], // selected photographs. 36 and 38 are paired; 37 stands alone.
+more: [6,14,15,27,16,19,20,21,24,28,17,22,23,33,34,35,29,30,31,32],
+large: {}, // archive is handled by the editorial masonry layout below
 reel: [25,26,36,14,15,16,19,20,21,24,28,22,23,33,34,35] // portrait photos the home screen shows when you hover Photography
 };
 const FILMS = [ // id = the part after v= in the YouTube link. Each film also needs two clips:
