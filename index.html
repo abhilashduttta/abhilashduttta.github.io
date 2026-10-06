@@ -25,7 +25,7 @@ a{color:inherit;text-decoration:none;cursor:pointer}
 @keyframes in{from{opacity:0;transform:translateY(4vh)}}
 @keyframes ot{to{opacity:0;transform:translateY(-2vh)}}
 /* home: a quiet stage. Name on top; the two words and the social icons at the bottom.
-   Hovering a word fills the screen: film clips, or three photos side by side. */
+Hovering a word fills the screen: film clips, or three photos side by side. */
 #v-home{position:relative;height:100svh;overflow:hidden}
 .stage{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .9s ease}
 body[data-h=c] .sc,body[data-h=p] .sp{opacity:1}
@@ -74,15 +74,15 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 .s2{grid-column:1/7;padding-left:0}
 .s3{grid-column:7/13;padding-right:0}
 .pic{position:relative}
-.s1 .pic::before,.s3 .pic::before{content:"";position:absolute;left:-1.4vw;top:0;bottom:0;border-left:1px solid var(--line)}   /* column rule runs alongside the picture + caption only */
-.story h3{margin-bottom:1.1rem;font:400 clamp(1.5rem,2.6vw,2.6rem)/1.05 var(--serif);letter-spacing:-.01em}
+.s1 .pic::before,.s3 .pic::before{content:"";position:absolute;left:-1.4vw;top:0;bottom:0;border-left:1px solid var(--line)} /* column rule runs alongside the picture + caption only */
+.story h3{margin-bottom:1.1rem;font:400 clamp(1.5rem,2.6vw,2.6rem)/1.05 var(--disp);letter-spacing:-.01em}
 .frame{position:relative;aspect-ratio:4/3;background:#000;overflow:hidden;cursor:pointer;outline:1px solid var(--line);outline-offset:4px}
 .frame video{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1.8s var(--ease),opacity .6s}
 .frame:hover video{transform:scale(1.035);opacity:.85}
 .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .pb{position:absolute;left:1rem;bottom:.9rem;font-size:.85rem;letter-spacing:.08em;text-shadow:0 0 12px rgba(0,0,0,.7)}
 .yr{margin-left:.9rem;font:.75rem/1 var(--sans);letter-spacing:.2em;color:var(--mute)}
-.note{margin-top:.9rem;color:var(--mute);font:italic .95rem/1.4 var(--serif)}
+.note{margin-top:.9rem;color:var(--mute);font:400 .95rem/1.4 var(--sans)}
 @media(max-width:720px){.news .story{grid-column:1/-1;padding:1.8rem 0}.pic::before{display:none}}
 .sl{display:grid;row-gap:22vh;margin-bottom:24vh}
 .row{display:flex;justify-content:center;align-items:flex-start;gap:2vw}
@@ -125,11 +125,11 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 <nav id="bar"><a id="nmx" href="#/"></a><div><a data-r="cinematography" href="#/cinematography">Cinematography</a><a data-r="photography" href="#/photography">Photography</a><a data-r="about" href="#/about">About</a><a data-r="contact" href="#/contact">Contact</a></div></nav>
 <main>
 <section class="view" id="v-home">
-  <div class="stage sc" id="sc"></div><div class="stage sp" id="sp"></div><div class="shade"></div>
-  <div class="top"><a class="u" href="#/contact">Contact</a><div class="nm" id="nm"></div><a class="u" href="#/about">About</a></div>
-  <div class="dock">
-    <div class="words"><a class="w p" data-k="p" href="#/photography">Photography</a><a class="w c" data-k="c" href="#/cinematography">Cinematography</a></div>
-  </div>
+<div class="stage sc" id="sc"></div><div class="stage sp" id="sp"></div><div class="shade"></div>
+<div class="top"><a class="u" href="#/contact">Contact</a><div class="nm" id="nm"></div><a class="u" href="#/about">About</a></div>
+<div class="dock">
+<div class="words"><a class="w p" data-k="p" href="#/photography">Photography</a><a class="w c" data-k="c" href="#/cinematography">Cinematography</a></div>
+</div>
 </section>
 <section class="view" id="v-cinematography"><div class="pg"><div class="news" id="fg"></div></div></section>
 <section class="view" id="v-photography"><div class="pg"><div class="sl" id="sl"></div><div class="gx pgrid" id="pgr"></div></div></section>
@@ -137,33 +137,31 @@ body:not(.home) #bar{opacity:1;pointer-events:auto}
 <section class="view" id="v-contact"><div class="pg"><div class="hd rv"><h1>Contact</h1></div><a id="em" class="rv"></a><a id="ig" class="rv cl" target="_blank" rel="noopener">Instagram</a><a id="yt" class="rv cl" target="_blank" rel="noopener">YouTube</a><a id="ph" class="rv cl"></a></div></section>
 </main>
 <div id="lb"></div>
-
 <script>
 /* ============ EDIT ONLY THIS BLOCK ============ */
 const SITE = {
-  name: "Abhilash Dutta",
-  role: "Photographer and cinematographer",
-  email: "abhilashduttta@gmail.com",
-  instagram: "https://www.instagram.com/abhilashd_",
-  youtube: "https://www.youtube.com/@GrindingA",
-  phone: "+91 7002403078",
-  about: "I developed feelings for nature when our family moved to Guwahati in 2007. I wanted to cherish my memories, so I learned to click photos using my father's camera, who also had a passion for photography and cinematography. Since then, I’ve shot several portraits and landscapes around me",
-  services: ["Photography", "Cinematography", "Colour grading"],
-  folder: "photos/", ext: "jpg",
-  favs: [[1], [25, 26], [8], [36]],   // your favourites, shown huge. [25, 26] = two side by side
-  more: [6,37,38,14,15,27,16,19,20,21,24,28,17,22,23,33,34,35,29,30,31,32],
-  large: { 37: 66, 27: 46, 28: 46 },   // photos in the list above that are shown bigger (number = width in % of the screen)
-  reel: [25,26,36,14,15,16,19,20,21,24,28,22,23,33,34,35]   // portrait photos the home screen shows when you hover Photography
+name: "Abhilash Dutta",
+role: "Photographer and cinematographer",
+email: "abhilashduttta@gmail.com",
+instagram: "https://www.instagram.com/abhilashd_",
+youtube: "https://www.youtube.com/@GrindingA",
+phone: "+91 7002403078",
+about: "I developed feelings for nature when our family moved to Guwahati in 2007. I wanted to cherish my memories, so I learned to click photos using my father's camera, who also had a passion for photography and cinematography. Since then, I’ve shot several portraits and landscapes around me",
+services: ["Photography", "Cinematography", "Colour grading"],
+folder: "photos/", ext: "jpg",
+favs: [[1], [25, 26], [8], [36]], // your favourites, shown huge. [25, 26] = two side by side
+more: [6,37,38,14,15,27,16,19,20,21,24,28,17,22,23,33,34,35,29,30,31,32],
+large: { 37: 66, 27: 46, 28: 46 }, // photos in the list above that are shown bigger (number = width in % of the screen)
+reel: [25,26,36,14,15,16,19,20,21,24,28,22,23,33,34,35] // portrait photos the home screen shows when you hover Photography
 };
-const FILMS = [       // id = the part after v= in the YouTube link. Each film also needs two clips:
-                      // videos/c<n>.mp4 (home strips) and videos/p<n>.mp4 (films page), n = its position from 0
-  { id: "jEhxQ_7oEMI", title: "Greens",                   year: "2026", role: "Cinematography", note: "Shot on Sony ZV-E10" },
-  { id: "f44YVhao46c", title: "Coffee",                   year: "2026", role: "Cinematography", note: "Sony ZV-E10 · Nikon AF-S Nikkor 50mm f/1.8G" },
-  { id: "90lVdO0Toyo", title: "Post Cards from Munsyari", year: "2026", role: "Cinematography", note: "Uttarakhand" },
-  { id: "FW3b2_Bomf4", title: "Somewhere in Lucknow",     year: "",     role: "Cinematography", note: "iPhone 17 Pro · open gate" }
+const FILMS = [ // id = the part after v= in the YouTube link. Each film also needs two clips:
+// videos/c<n>.mp4 (home strips) and videos/p<n>.mp4 (films page), n = its position from 0
+{ id: "jEhxQ_7oEMI", title: "Greens", year: "2026", role: "Cinematography", note: "Sony ZV-E10" },
+{ id: "f44YVhao46c", title: "Coffee", year: "2026", role: "Cinematography", note: "Sony ZV-E10 · Nikon AF-S Nikkor 50mm f/1.8G" },
+{ id: "90lVdO0Toyo", title: "Post Cards from Munsyari", year: "2026", role: "Cinematography", note: "Sony ZV-E10" },
+{ id: "FW3b2_Bomf4", title: "Somewhere in Lucknow", year: "2026", role: "Cinematography", note: "iPhone 17 Pro · open gate" }
 ];
 /* ============ END OF EDIT BLOCK ============ */
-
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)], pad = n => String(n).padStart(2, "0");
 const src = n => SITE.folder + n + "." + SITE.ext;
 const ALL = [...SITE.favs.flat(), ...SITE.more];
@@ -172,102 +170,96 @@ $("#nm").textContent = $("#nmx").textContent = SITE.name;
 $("#ab").textContent = SITE.about;
 $("#svc").innerHTML = SITE.services.map(s => `<li>${s}</li>`).join("");
 $("#em").textContent = SITE.email; $("#em").href = "mailto:" + SITE.email; $("#ig").href = SITE.instagram; $("#yt").href = SITE.youtube; $("#ph").textContent = SITE.phone; $("#ph").href = "tel:" + SITE.phone.replace(/\s/g, "");
-
 /* films page */
 $("#fg").innerHTML = FILMS.map((f, i) => `<article class="story s${i % 4} rv"><h3>${f.title}${f.year ? `<span class="yr">${f.year}</span>` : ""}</h3><div class="pic"><div class="frame" tabindex="0" role="button" aria-label="Play ${f.title}" data-v="${i}"><video src="videos/p${i}.mp4" muted loop playsinline preload="none"></video><span class="pb">Play film</span></div>${f.note ? `<p class="note">${f.note}</p>` : ""}</div></article>`).join("");
-
 /* photography page */
 const fig = (n, style, cls) => `<figure class="ph rv ${cls}" data-n="${n}" style="${style}"><img src="${src(n)}" alt="Photograph ${n}" loading="lazy" decoding="async"><figcaption>${pad(n)}</figcaption></figure>`;
 $("#sl").innerHTML = SITE.favs.map(r => `<div class="row n${r.length}">${r.map(n => fig(n, "", "fav")).join("")}</div>`).join("");
 const PL = [[1,7,0],[9,4,14],[4,5,4],[1,4,0],[6,3,10],[10,3,2],[2,6,0],[9,4,18],[5,4,0],[1,5,6],[8,5,0]]; let lg = 0;
 $("#pgr").innerHTML = SITE.more.map((n, i) => {
-  if (n in SITE.large) return fig(n, `--c:1 / -1;--o:0;--j:${lg++ % 2 ? "flex-end" : "flex-start"};--w:${SITE.large[n]}vw`, "big");
-  const [a, s, o] = PL[i % PL.length]; return fig(n, `--c:${a} / span ${s};--o:${o}`, ""); }).join("");
+if (n in SITE.large) return fig(n, `--c:1 / -1;--o:0;--j:${lg++ % 2 ? "flex-end" : "flex-start"};--w:${SITE.large[n]}vw`, "big");
+const [a, s, o] = PL[i % PL.length]; return fig(n, `--c:${a} / span ${s};--o:${o}`, ""); }).join("");
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
 $$(".rv").forEach(el => io.observe(el));
-
 /* home: hovering a word fills the whole screen.
-   Cinematography: your self-hosted clips (videos/c0.mp4, c1.mp4 ... in FILMS order) cut one after another.
-   Photography: three portrait photos side by side (the "reel" list above), each changing in turn. */
+Cinematography: your self-hosted clips (videos/c0.mp4, c1.mp4 ... in FILMS order) cut one after another.
+Photography: three portrait photos side by side (the "reel" list above), each changing in turn. */
 const CLIPS = FILMS.map((_, i) => "videos/c" + i + ".mp4");
 const SC = $("#sc"), SP = $("#sp");
 SC.innerHTML = `<video muted loop playsinline></video><video muted loop playsinline></video>`;
 SP.innerHTML = `<div class="pcol"></div><div class="pcol"></div><div class="pcol"></div>`;
 const VV = [...SC.querySelectorAll("video")], COLS = [...SP.children];
 VV.forEach(v => v.muted = true);
-VV[0].preload = "auto"; VV[0].src = CLIPS[0];                       // warm up the first clip
+VV[0].preload = "auto"; VV[0].src = CLIPS[0]; // warm up the first clip
 const ORDER = [...SITE.reel].sort(() => Math.random() - .5), PC = {};
 const pre = n => PC[n] || (PC[n] = Object.assign(new Image(), { src: src(n), decoding: "async" }));
-setTimeout(() => ORDER.slice(0, 4).forEach(pre), 2500);              // warm up a few photos
+setTimeout(() => ORDER.slice(0, 4).forEach(pre), 2500); // warm up a few photos
 let mode = "", tok = 0, ci = 0, pi = 0, T = [];
 const ready = v => new Promise(r => { if (v.readyState >= 2) return r(v); const ok = () => r(v);
-  v.addEventListener("loadeddata", ok, { once: true }); v.addEventListener("playing", ok, { once: true }); setTimeout(ok, 4000); });
+v.addEventListener("loadeddata", ok, { once: true }); v.addEventListener("playing", ok, { once: true }); setTimeout(ok, 4000); });
 const free = v => { v.classList.remove("s"); v.pause(); v.removeAttribute("src"); v.load(); };
 const film = t => { if (t !== tok) return;
-  const v = VV.find(x => !x.classList.contains("s")), o = VV.find(x => x !== v), c = CLIPS[ci++ % CLIPS.length];
-  if (v.getAttribute("src") !== c) v.src = c;
-  v.play().catch(() => {});
-  ready(v).then(() => { if (t !== tok) return;
-    v.classList.add("s"); o.classList.remove("s");
-    setTimeout(() => { if (!o.classList.contains("s")) free(o); }, 1200);
-    T.push(setTimeout(() => film(t), 4300)); }); };
+const v = VV.find(x => !x.classList.contains("s")), o = VV.find(x => x !== v), c = CLIPS[ci++ % CLIPS.length];
+if (v.getAttribute("src") !== c) v.src = c;
+v.play().catch(() => {});
+ready(v).then(() => { if (t !== tok) return;
+v.classList.add("s"); o.classList.remove("s");
+setTimeout(() => { if (!o.classList.contains("s")) free(o); }, 1200);
+T.push(setTimeout(() => film(t), 4300)); }); };
 const photo = (k, t, first) => { if (t !== tok) return;
-  const im = pre(ORDER[pi++ % ORDER.length]);
-  const show = () => { if (t !== tok || !im.naturalWidth) return;
-    const col = COLS[k], el = document.createElement("img"); el.src = im.src; el.alt = "";
-    [...col.children].forEach(o => { o.classList.remove("s"); setTimeout(() => o.remove(), 1400); });
-    col.append(el); requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("s"))); };
-  im.complete ? show() : im.addEventListener("load", show, { once: true });
-  pre(ORDER[pi % ORDER.length]);
-  T.push(setTimeout(() => photo(k, t), first ? 3500 + k * 1100 : 3600)); };   // columns change one after another
+const im = pre(ORDER[pi++ % ORDER.length]);
+const show = () => { if (t !== tok || !im.naturalWidth) return;
+const col = COLS[k], el = document.createElement("img"); el.src = im.src; el.alt = "";
+[...col.children].forEach(o => { o.classList.remove("s"); setTimeout(() => o.remove(), 1400); });
+col.append(el); requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("s"))); };
+im.complete ? show() : im.addEventListener("load", show, { once: true });
+pre(ORDER[pi % ORDER.length]);
+T.push(setTimeout(() => photo(k, t), first ? 3500 + k * 1100 : 3600)); }; // columns change one after another
 const setMode = m => { if (m === mode) return;
-  mode = m; const t = ++tok; T.forEach(clearTimeout); T = [];
-  if (m) document.body.dataset.h = m; else delete document.body.dataset.h;
-  if (m === "c") film(t); else setTimeout(() => { if (mode !== "c") VV.forEach(free); }, 1200);
-  if (m === "p") COLS.forEach((_, k) => photo(k, t, true)); else setTimeout(() => { if (mode !== "p") COLS.forEach(c => c.innerHTML = ""); }, 1300); };
-
+mode = m; const t = ++tok; T.forEach(clearTimeout); T = [];
+if (m) document.body.dataset.h = m; else delete document.body.dataset.h;
+if (m === "c") film(t); else setTimeout(() => { if (mode !== "c") VV.forEach(free); }, 1200);
+if (m === "p") COLS.forEach((_, k) => photo(k, t, true)); else setTimeout(() => { if (mode !== "p") COLS.forEach(c => c.innerHTML = ""); }, 1300); };
 // leaving a word resets after a short grace, so crossing between the two words doesn't flicker
 let L;
 $$(".w").forEach(a => {
-  a.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") { clearTimeout(L); setMode(a.dataset.k); } });
-  a.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") L = setTimeout(() => setMode(""), 250); });
-  a.addEventListener("focus", () => { if (a.matches(":focus-visible")) setMode(a.dataset.k); });
-  a.addEventListener("blur", e => { if (!e.relatedTarget?.matches(".w")) setMode(""); }); });
-
+a.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") { clearTimeout(L); setMode(a.dataset.k); } });
+a.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") L = setTimeout(() => setMode(""), 250); });
+a.addEventListener("focus", () => { if (a.matches(":focus-visible")) setMode(a.dataset.k); });
+a.addEventListener("blur", e => { if (!e.relatedTarget?.matches(".w")) setMode(""); }); });
 /* pages: smooth hand-over between views */
 let curV = null;
 function route() {
-  let r = location.hash.replace(/^#\/?/, "") || "home";
-  const next = $("#v-" + r) || $("#v-home"); if (!$("#v-" + r)) r = "home";
-  const prev = curV; if (prev === next) return;
-  const done = () => { if (prev) prev.classList.remove("on", "out"); next.classList.add("on"); curV = next;
-    document.body.classList.toggle("home", r === "home"); scrollTo(0, 0);
-    $$("#bar div a").forEach(a => a.classList.toggle("cur", a.dataset.r === r));
-    setMode("");
-    $$("#fg video").forEach(v => r === "cinematography" ? v.play().catch(() => {}) : v.pause()); };
-  if (prev) { prev.classList.add("out"); setTimeout(done, 480); } else done();
+let r = location.hash.replace(/^#\/?/, "") || "home";
+const next = $("#v-" + r) || $("#v-home"); if (!$("#v-" + r)) r = "home";
+const prev = curV; if (prev === next) return;
+const done = () => { if (prev) prev.classList.remove("on", "out"); next.classList.add("on"); curV = next;
+document.body.classList.toggle("home", r === "home"); scrollTo(0, 0);
+$$("#bar div a").forEach(a => a.classList.toggle("cur", a.dataset.r === r));
+setMode("");
+$$("#fg video").forEach(v => r === "cinematography" ? v.play().catch(() => {}) : v.pause()); };
+if (prev) { prev.classList.add("out"); setTimeout(done, 480); } else done();
 }
 addEventListener("hashchange", route); route();
-
 /* viewer + film player */
 const lb = $("#lb"); let cur = 0;
 const open = html => { lb.innerHTML = html + `<button class="lbb x">Close</button>`; lb.className = "on"; };
 const shut = () => { lb.className = ""; lb.innerHTML = ""; };
 const show = i => { cur = (i + ALL.length) % ALL.length;
-  open(`<img src="${src(ALL[cur])}" alt=""><button class="lbb prv">Previous</button><button class="lbb nxt">Next</button>`); };
+open(`<img src="${src(ALL[cur])}" alt=""><button class="lbb prv">Previous</button><button class="lbb nxt">Next</button>`); };
 document.addEventListener("click", e => {
-  const v = e.target.closest("[data-v]"), p = e.target.closest(".ph");
-  if (v) { if (!v.querySelector("iframe")) v.innerHTML = `<iframe src="https://www.youtube.com/embed/${FILMS[v.dataset.v].id}?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay;fullscreen;encrypted-media" allowfullscreen></iframe>`; }
-  else if (p) show(ALL.indexOf(+p.dataset.n));
-  else if (e.target.closest(".nxt")) show(cur + 1);
-  else if (e.target.closest(".prv")) show(cur - 1);
-  else if (e.target.closest(".x") || e.target === lb) shut();
+const v = e.target.closest("[data-v]"), p = e.target.closest(".ph");
+if (v) { if (!v.querySelector("iframe")) v.innerHTML = `<iframe src="https://www.youtube.com/embed/${FILMS[v.dataset.v].id}?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay;fullscreen;encrypted-media" allowfullscreen></iframe>`; }
+else if (p) show(ALL.indexOf(+p.dataset.n));
+else if (e.target.closest(".nxt")) show(cur + 1);
+else if (e.target.closest(".prv")) show(cur - 1);
+else if (e.target.closest(".x") || e.target === lb) shut();
 });
 document.addEventListener("keydown", e => {
-  if (e.key === "Enter" && e.target.dataset && e.target.dataset.v) e.target.click();
-  if (!lb.className) return;
-  if (e.key === "Escape") shut();
-  if (e.key === "ArrowRight") show(cur + 1); if (e.key === "ArrowLeft") show(cur - 1);
+if (e.key === "Enter" && e.target.dataset && e.target.dataset.v) e.target.click();
+if (!lb.className) return;
+if (e.key === "Escape") shut();
+if (e.key === "ArrowRight") show(cur + 1); if (e.key === "ArrowLeft") show(cur - 1);
 });
 </script>
 </body>
